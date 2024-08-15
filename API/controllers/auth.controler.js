@@ -1,24 +1,15 @@
+import "express-async-errors";
+import { StatusCodes } from "http-status-codes";
+
+//imported user model
 import User from "../models/user.model.js";
-import bcrypt from "bcryptjs";
 
+//signup route controller
 export const signup = async (req, res, next) => {
-  console.log(req.body); // Debug: Log the request body
-
-  const { username, email, password } = req.body;
-
-  try {
-    //Hash the password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    // Create the user with the hashed password
-    const user = await User.create({
-      username,
-      email,
-      password: hashedPassword,
-    });
-    res.json({ message: "User created successfully", user });
-  } catch (error) {
-    next(error);
-  }
+  const user = await User.create({
+    ...req.body,
+  });
+  res
+    .status(StatusCodes.CREATED)
+    .json({ message: "User created successfully", user });
 };
