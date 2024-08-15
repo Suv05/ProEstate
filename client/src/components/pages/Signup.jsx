@@ -1,21 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import Spin from "../utilities/Spin";
 
 function Signup() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async (formData) => {
-    console.log(formData);
-
-    const res = await fetch("/api/v1/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
-    console.log(data);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/v1/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.status === "error") {
+        setLoading(false);
+        return;
+      }
+      setLoading(false);
+      navigate("/signIn");
+    } catch (error) {
+      setLoading(false);
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 font-sans">
@@ -28,10 +44,17 @@ function Signup() {
             <label className="block text-gray-700">Name</label>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", {
+                required: true,
+                minLength: 1,
+                maxLength: 30,
+              })}
               className="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-[#5F0F40]"
               placeholder="Your Name"
             />
+            {errors.name && (
+              <span className="text-xs text-theme">This field is required</span>
+            )}
           </div>
           <div>
             <label className="block text-gray-700">Email</label>
@@ -39,8 +62,11 @@ function Signup() {
               type="email"
               className="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-[#5F0F40]"
               placeholder="Your Email"
-              {...register("email")}
+              {...register("email", { required: true })}
             />
+            {errors.email && (
+              <span className="text-xs text-theme">This field is required</span>
+            )}
           </div>
           <div>
             <label className="block text-gray-700">Password</label>
@@ -48,14 +74,20 @@ function Signup() {
               type="password"
               className="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-[#5F0F40]"
               placeholder="Your Password"
-              {...register("password")}
+              {...register("password", { required: true, minLength: 6 })}
             />
           </div>
+          {errors.password && (
+            <span className="text-xs text-theme">
+              This field is required with minimum length 6
+            </span>
+          )}
           <button
+            disabled={loading}
             type="submit"
-            className="w-full bg-primary text-white py-2 rounded-lg hover:bg-sec focus:outline-none focus:ring-2 focus:ring-sec transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95"
+            className="w-full bg-primary text-white py-2 rounded-lg hover:bg-sec focus:outline-none focus:ring-2 focus:ring-sec transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95 flex justify-center items-center"
           >
-            Sign Up
+            {loading ? <Spin /> : "Sign Up"}
           </button>
           <button
             type="button"
