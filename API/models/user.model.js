@@ -7,7 +7,6 @@ const userSchema = new Schema(
     name: {
       type: String,
       required: [true, "This feild can't be empty"],
-      unique: true,
       trim: true,
       set: (value) =>
         value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
@@ -40,9 +39,6 @@ userSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
-
-
-
 
 const User = model("User", userSchema);
 export default User;
