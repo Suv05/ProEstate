@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+
+//utilities
 import Spin from "../utilities/Spin.jsx";
 import Err from "../utilities/Err.jsx";
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "../redux/user/userSlice.js";
 
 function Signin() {
   const {
@@ -10,12 +18,13 @@ function Signin() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [loading, setLoading] = useState(false);
+  const { loading } = useSelector((state) => state.user);
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async (formData) => {
-    setLoading(true);
+    dispatch(signInStart());
     try {
       const res = await fetch("/api/v1/auth/signin", {
         method: "POST",
@@ -28,16 +37,16 @@ function Signin() {
       // Check if the response status is not 2xx
       if (!res.ok) {
         const errorData = await res.json();
-        setLoading(false);
+        dispatch(signInFailure());
         setErrMsg(errorData.message || "Something went wrong");
         return;
       }
 
       const data = await res.json();
-      setLoading(false);
+      dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      setLoading(false);
+      dispatch(signInFailure());
       setErrMsg("An error occurred. Please try again later.");
     }
   };
