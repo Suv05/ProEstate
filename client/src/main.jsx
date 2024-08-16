@@ -9,6 +9,11 @@ import {
 } from "react-router-dom";
 import "./index.css";
 
+//redux dependencies
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "./components/redux/store.js";
+
 import App from "./components/routes/App.jsx";
 import Home from "./components/pages/Home.jsx";
 import Signup from "./components/pages/Signup.jsx";
@@ -25,6 +30,11 @@ const router = createBrowserRouter(
 );
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Provider store={store}>
+      {/* PersistGate delays rendering until the persisted state is rehydrated */}
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
