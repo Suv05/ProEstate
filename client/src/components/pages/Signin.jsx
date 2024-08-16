@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 //utilities
 import Spin from "../utilities/Spin.jsx";
 import Err from "../utilities/Err.jsx";
+import OAuth from "../utilities/OAuth.jsx";
 import {
   signInFailure,
   signInStart,
@@ -88,12 +89,7 @@ function Signin() {
           >
             {loading ? <Spin /> : "Sign In"}
           </button>
-          <button
-            type="button"
-            className="w-full bg-theme text-white py-2 rounded-lg hover:bg-btn focus:outline-none focus:ring-2 focus:ring-btn mt-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95"
-          >
-            Continue with Google
-          </button>
+          <OAuth />
         </form>
         <p className="text-center text-gray-600 mt-4">
           Don’t have an account?{" "}

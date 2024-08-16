@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Spin from "../utilities/Spin";
+import OAuth from "../utilities/OAuth";
 
 function Signup() {
   const {
@@ -94,12 +95,7 @@ function Signup() {
           >
             {loading ? <Spin /> : "Sign Up"}
           </button>
-          <button
-            type="button"
-            className="w-full bg-theme text-white py-2 rounded-lg hover:bg-btn focus:outline-none focus:ring-2 focus:ring-btn mt-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95"
-          >
-            Continue with Google
-          </button>
+          <OAuth />
         </form>
         <p className="text-center text-gray-600 mt-4">
           Already have an account?{" "}
