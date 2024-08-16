@@ -15,9 +15,20 @@ import User from "../models/user.model.js";
 
 //signup route controller
 export const signup = async (req, res, next) => {
-  const user = await User.create({
-    ...req.body,
-  });
+  const { email, name, password } = req.body;
+
+  // Check if the email already exists
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      status: "error",
+      message: "Email-id already in use",
+    });
+  }
+
+  // Create a new user if email is not taken
+  const user = await User.create({ name, email, password });
+
   res.status(StatusCodes.CREATED).json({
     message: "User created successfully",
     user: {
