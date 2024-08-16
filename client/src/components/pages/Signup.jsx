@@ -10,6 +10,7 @@ function Signup() {
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
   const onSubmit = async (formData) => {
@@ -23,8 +24,11 @@ function Signup() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      console.log(data);
+
       if (data.status === "error") {
         setLoading(false);
+        setErrMsg(data.message);
         return;
       }
       setLoading(false);
@@ -67,6 +71,7 @@ function Signup() {
             {errors.email && (
               <span className="text-xs text-theme">This field is required</span>
             )}
+            {errMsg && <span className="text-xs text-theme">{errMsg}</span>}
           </div>
           <div>
             <label className="block text-gray-700">Password</label>
