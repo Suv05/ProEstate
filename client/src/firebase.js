@@ -3,12 +3,10 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import dotenv from "dotenv";
-dotenv.config();
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.OAUTH_API_KEY,
+  apiKey: import.meta.env.VITE_OAUTH_API_KEY,
   authDomain: "prostate-d2554.firebaseapp.com",
   projectId: "prostate-d2554",
   storageBucket: "prostate-d2554.appspot.com",
