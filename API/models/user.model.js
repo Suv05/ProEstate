@@ -28,6 +28,11 @@ const userSchema = new Schema(
       minLength: 6,
       trim: true,
     },
+    avtar: {
+      type: String,
+      default:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFNyZImC4QrPaThQUB_7gRgc02RS9qwX_pSw&s",
+    },
   },
   { timestamps: true }
 );
