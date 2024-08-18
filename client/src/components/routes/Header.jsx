@@ -1,10 +1,16 @@
-import { NavLink, Link } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+//utiliteis
+import Signbtn from "../utilities/Signbtn";
+import Userprofile from "../utilities/Userprofile";
 
 function Header() {
   const { currUser } = useSelector((state) => state.user);
-  console.log("current user: ", currUser);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   return (
     <header className="bg-white shadow-md font-sans">
@@ -40,31 +46,46 @@ function Header() {
           </form>
         </div>
 
-        {/* Sign Up and Login buttons */}
-        <div className="flex items-center space-x-4">
+        {/* Profile/Buttons */}
+        <div className="relative">
           {currUser ? (
-            <Link to="account">
-              <div className="relative w-11 h-11">
-                <img
-                  src={currUser.avtar}
-                  alt="Profile"
-                  className="w-full h-full rounded-full object-cover border-2 border-primary hover:border-sec"
-                />
+            <div className="relative">
+              <div
+                className="cursor-pointer flex items-center space-x-2 bg-gray-100 rounded-xl py-2 px-3 hover:shadow-md"
+                onClick={toggleDropdown}
+              >
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-primary">
+                  <img
+                    src={currUser.avtar}
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <svg
+                    className={`w-6 h-6 text-gray-600 transform transition-transform duration-300 ${
+                      dropdownOpen ? "rotate-90" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                  </svg>
+                </div>
               </div>
-            </Link>
+
+              {/* Dropdown Menu */}
+              {dropdownOpen && <Userprofile />}
+            </div>
           ) : (
-            <>
-              <Link to="signin">
-                <button className="border-1 border-btn text-btn hover:bg-btn hover:text-white px-4 py-2 rounded-md active:scale-75 hover:scale-105">
-                  Login
-                </button>
-              </Link>
-              <Link to="signup">
-                <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-sec active:scale-75 hover:scale-105">
-                  Sign Up
-                </button>
-              </Link>
-            </>
+            <Signbtn />
           )}
         </div>
       </div>
