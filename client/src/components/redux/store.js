@@ -8,7 +8,7 @@ const persistConfig = {
   key: "root", // The key for the persisted data (root for the whole store)
   storage, // The storage engine (localStorage by default)
   whitelist: ["user"], // Specify which reducers to persist
-  version:1
+  version: 1,
 };
 
 // Combine your reducers (if you have multiple slices)

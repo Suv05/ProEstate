@@ -18,6 +18,9 @@ import App from "./components/routes/App.jsx";
 import Home from "./components/pages/Home.jsx";
 import Signup from "./components/pages/Signup.jsx";
 import Signin from "./components/pages/Signin.jsx";
+import Protected from "./components/routes/Protected.jsx";
+import Profile from "./components/User-Page/Profile.jsx";
+import Account from "./components/User-Page/Account.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +28,10 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
+      <Route element={<Protected />}>
+        <Route path="profile" element={<Profile />} />
+        <Route path="account" element={<Account />} />
+      </Route>
     </Route>
   )
 );
