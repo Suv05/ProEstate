@@ -9,6 +9,11 @@ export default defineConfig({
         target: "http://localhost:3000",
         secure: false,
       },
+      "/google-image": {
+        target: "https://lh3.googleusercontent.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/google-image/, ""),
+      },
     },
   },
   plugins: [react()],
