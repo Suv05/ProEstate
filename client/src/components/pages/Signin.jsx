@@ -44,7 +44,9 @@ function Signin() {
       }
 
       const data = await res.json();
-      dispatch(signInSuccess(data));
+      dispatch(signInSuccess(data.validUser));
+      //console.log(data);
+
       navigate("/");
     } catch (error) {
       dispatch(signInFailure());
