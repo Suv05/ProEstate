@@ -11,6 +11,9 @@ const userSchema = new Schema(
       set: (value) =>
         value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
     },
+    userName: {
+      type: String,
+    },
     email: {
       type: String,
       minLength: 10,
@@ -31,7 +34,7 @@ const userSchema = new Schema(
     avtar: {
       type: String,
       default:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFNyZImC4QrPaThQUB_7gRgc02RS9qwX_pSw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQPyp0VpE3_ZfgFXrMoIv_isLbi09ttWxvUA&s",
     },
   },
   { timestamps: true }
