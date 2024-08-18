@@ -1,6 +1,11 @@
 import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const { currUser } = useSelector((state) => state.user);
+  console.log("current user: ", currUser);
+
+
   return (
     <header className="bg-white shadow-md font-sans">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -16,7 +21,7 @@ function Header() {
           <form action="">
             <input
               type="text"
-              className=" w-full md:w-full xs:w-28 sm:w-60 lg:w-full xl:w-full 2xl:w-full  border rounded-md py-2 px-4 pl-10 bg-gray-100 focus:outline-none focus:border-blue-500"
+              className="w-full border rounded-md py-2 px-4 pl-10 bg-gray-100 focus:outline-none focus:border-blue-500"
               placeholder="Search properties..."
             />
             <div className="absolute left-3 top-3 text-gray-400">
@@ -37,16 +42,30 @@ function Header() {
 
         {/* Sign Up and Login buttons */}
         <div className="flex items-center space-x-4">
-          <Link to="signin">
-            <button className="border-1 border-btn text-btn hover:bg-btn hover:text-white px-4 py-2 rounded-md active:scale-75 hover:scale-105">
-              Login
-            </button>
-          </Link>
-          <Link to="signup">
-            <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-sec active:scale-75 hover:scale-105">
-              Sign Up
-            </button>
-          </Link>
+          {currUser ? (
+            <Link to="account">
+              <div className="relative w-11 h-11">
+                <img
+                  src={currUser.avtar}
+                  alt="Profile"
+                  className="w-full h-full rounded-full object-cover border-2 border-primary hover:border-sec"
+                />
+              </div>
+            </Link>
+          ) : (
+            <>
+              <Link to="signin">
+                <button className="border-1 border-btn text-btn hover:bg-btn hover:text-white px-4 py-2 rounded-md active:scale-75 hover:scale-105">
+                  Login
+                </button>
+              </Link>
+              <Link to="signup">
+                <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-sec active:scale-75 hover:scale-105">
+                  Sign Up
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
