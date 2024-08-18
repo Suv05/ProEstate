@@ -23,18 +23,27 @@ export const signup = async (req, res, next) => {
   if (existingUser) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       status: "error",
-      message: "Email-id already in use",
+      message: "Email-id already in use,try to login",
     });
   }
 
-  // Create a new user if email is not taken
-  const user = await User.create({ name, email, password });
+  // Format the name to lowercase, remove spaces, and append a unique suffix
+  const processedName = name.toLowerCase().replace(/\s+/g, "");
+  const uniqueSuffix = Math.floor(100 + Math.random() * 900);
+  const formattedName = `${processedName}${uniqueSuffix}`;
 
+  // Create a new user if email is not taken
+  const user = await User.create({
+    name: name,
+    userName: formattedName,
+    email: email,
+    password: password,
+  });
+
+  user.password = undefined;
   res.status(StatusCodes.CREATED).json({
     message: "User created successfully",
-    user: {
-      name: user.name,
-    },
+    user,
   });
 };
 
@@ -94,7 +103,7 @@ export const signinWithGoogle = async (req, res, next) => {
 
     //1st generate a random password
     const genPass = crypto.randomBytes(8).toString("hex"); // Generates a random password
-    const hashPass = bcryptjs.hashSync(genPass, 10); //hashed usong bcript
+    const hashPass = bcryptjs.hashSync(genPass, 10); //hashed using bcript
 
     // Format the name to lowercase, remove spaces, and append a unique suffix
     const processedName = name.toLowerCase().replace(/\s+/g, "");
@@ -102,25 +111,26 @@ export const signinWithGoogle = async (req, res, next) => {
     const formattedName = `${processedName}${uniqueSuffix}`;
 
     // Store the new user in the database
-    const newUser = await User.create({
-      name: formattedName,
+    const validUser = await User.create({
+      name: name,
+      userName: formattedName,
       email: email,
       password: hashPass,
-      avatar: photo,
+      avtar: photo,
     });
 
     // Generate token for the new user
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET_KEY);
 
     // Remove password before sending the user object in the response
-    newUser.password = undefined;
+    validUser.password = undefined;
 
     return res
       .cookie("access_token", token, { httpOnly: true })
       .status(StatusCodes.CREATED)
       .json({
-        message: "User registered and logged in successfully",
-        newUser,
+        message: "User registered successfully",
+        validUser,
       });
   }
 };

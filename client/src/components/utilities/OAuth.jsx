@@ -14,8 +14,6 @@ function OAuth({}) {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
 
-      console.log(result);
-
       //send response to our backend
       const res = await fetch("api/v1/auth/google", {
         method: "POST",
@@ -28,8 +26,11 @@ function OAuth({}) {
           photo: result.user.photoURL,
         }),
       });
+
       const data = await res.json();
-      dispatch(signInSuccess(data));
+
+      dispatch(signInSuccess(data.validUser));
+
       navigate("/");
     } catch (err) {
       console.log("Couldn't signin with google", err);
