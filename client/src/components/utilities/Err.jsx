@@ -2,7 +2,7 @@ import React from "react";
 
 function Err({errMsg}) {
   return (
-    <div className="mt-2 p-4 rounded-lg border border-red-500 bg-red-50 text-red-700 flex items-start">
+    <div className="mt-2 p-4 rounded-lg border border-red-500 bg-red-50 text-red-700 flex items-start mb-2">
       <svg
         className="w-5 h-5 mr-2 flex-shrink-0"
         fill="none"
