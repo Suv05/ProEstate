@@ -53,7 +53,7 @@ export const signin = async (req, res, next) => {
 
   const validUser = await User.findOne({ email });
   if (!validUser) {
-    throw new NotFoundError("User not found!😔");
+    throw new NotFoundError("User not found!😔 with this email ID");
   }
 
   const validPassword = await bcryptjs.compare(password, validUser.password);
