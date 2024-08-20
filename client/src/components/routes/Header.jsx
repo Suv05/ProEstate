@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 //utiliteis
@@ -9,8 +9,29 @@ import Userprofile from "../utilities/Userprofile";
 function Header() {
   const { currUser } = useSelector((state) => state.user);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropDownRef = useRef(null);
+  const location = useLocation();
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    // Add event listener for clicks outside the dropdown
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Close the dropdown on route change
+    setDropdownOpen(false);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [location]);
 
   return (
     <header className="bg-white shadow-md font-sans">
@@ -47,7 +68,7 @@ function Header() {
         </div>
 
         {/* Profile/Buttons */}
-        <div className="relative">
+        <div className="relative" ref={dropDownRef}>
           {currUser ? (
             <div className="relative">
               <div
