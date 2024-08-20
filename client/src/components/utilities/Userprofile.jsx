@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
-import { FiUser, FiList, FiPlusCircle, FiLogOut, FiSun, FiMoon } from "react-icons/fi";
-import Rightarrow from "../utilities/Rightarrow";
 import { useState } from "react";
+import {
+  FiUser,
+  FiList,
+  FiPlusCircle,
+  FiLogOut,
+  FiSun,
+  FiMoon,
+} from "react-icons/fi";
+
+import Rightarrow from "../utilities/Rightarrow";
+import Modal from "./Modal";
 
 function Userprofile() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
@@ -69,8 +79,8 @@ function Userprofile() {
 
         {/* Logout */}
         <Link
-          to="/logout"
           className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out flex items-center justify-between"
+          onClick={() => setIsModalOpen(true)}
         >
           <div className="flex items-center">
             <FiLogOut className="mr-3 text-gray-700 dark:text-gray-300 transition-colors duration-300 ease-in-out" />
@@ -78,6 +88,7 @@ function Userprofile() {
           </div>
           <Rightarrow />
         </Link>
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </>
   );
