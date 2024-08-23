@@ -70,7 +70,10 @@ export const signin = async (req, res, next) => {
   });
 
   res
-    .cookie("access_token", token, { httpOnly: true })
+    .cookie("access_token", token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+    })
     .status(StatusCodes.ACCEPTED)
     .json({
       message: "User logged in successfully",
@@ -92,7 +95,10 @@ export const signinWithGoogle = async (req, res, next) => {
     validUser.password = undefined;
 
     return res
-      .cookie("access_token", token, { httpOnly: true })
+      .cookie("access_token", token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+      })
       .status(StatusCodes.ACCEPTED)
       .json({
         message: "User logged in successfully",
@@ -126,7 +132,10 @@ export const signinWithGoogle = async (req, res, next) => {
     validUser.password = undefined;
 
     return res
-      .cookie("access_token", token, { httpOnly: true })
+      .cookie("access_token", token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+      })
       .status(StatusCodes.CREATED)
       .json({
         message: "User registered successfully",
