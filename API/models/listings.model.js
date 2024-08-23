@@ -54,7 +54,7 @@ const listingSchema = new Schema(
       type: Boolean,
       required: true,
     },
-    type: {
+    category: {
       type: String,
       required: true,
       enum: ["house", "apartment", "condo", "studio"], // specify allowed values

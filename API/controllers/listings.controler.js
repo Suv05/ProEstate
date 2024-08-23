@@ -8,7 +8,6 @@ import Listings from "../models/listings.model.js";
 export const createListings = async (req, res, next) => {
   const listings = await Listings.create({ ...req.body });
 
-
   // Check if the listing was created successfully
   if (!listings) {
     throw new AppError(
