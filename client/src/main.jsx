@@ -20,6 +20,7 @@ import Signup from "./components/pages/Signup.jsx";
 import Signin from "./components/pages/Signin.jsx";
 import Protected from "./components/routes/Protected.jsx";
 import Createlistings from "./components/User-Page/Createlistings.jsx";
+import Viewlistings from "./components/User-Page/Viewlistings.jsx";
 import Account from "./components/User-Page/Account.jsx";
 
 const router = createBrowserRouter(
@@ -29,8 +30,9 @@ const router = createBrowserRouter(
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
       <Route element={<Protected />}>
-        <Route path="account" element={<Account />} />
-        <Route path="new" element={<Createlistings />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/new" element={<Createlistings />} />
+        <Route path="/yourestate" element={<Viewlistings />} />
       </Route>
     </Route>
   )

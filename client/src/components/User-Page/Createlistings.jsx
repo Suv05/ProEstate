@@ -7,7 +7,7 @@ import Progress from "../utilities/Progress.jsx";
 import Success from "../utilities/Success.jsx";
 import Err from "../utilities/Err.jsx";
 import Spin from "../utilities/Spin.jsx";
-import { classNames } from "../utilities/classNames.js";
+import { classNames } from "../functions/classNames.js";
 
 //icons
 import { GiBathtub } from "react-icons/gi";
@@ -154,7 +154,7 @@ function CreateListings() {
       }
       const data = await res.json();
       setLoading(false);
-      navigate(`/listings/${data.listings._id}`);
+      navigate(`/yourestate`);
     } catch (err) {
       setErrMsg("An error occurred. Please try again later.");
       setLoading(false);
