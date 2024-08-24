@@ -14,6 +14,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./components/redux/store.js";
 
+//react query tanstack
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import App from "./components/routes/App.jsx";
 import Home from "./components/pages/Home.jsx";
 import Signup from "./components/pages/Signup.jsx";
@@ -37,12 +40,18 @@ const router = createBrowserRouter(
     </Route>
   )
 );
+
+// Create a client
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       {/* PersistGate delays rendering until the persisted state is rehydrated */}
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   </React.StrictMode>
