@@ -50,7 +50,7 @@ function Userprofile() {
 
         {/* Create Listings */}
         <Link
-          to="addlistings"
+          to="new"
           className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out flex items-center justify-between"
         >
           <div className="flex items-center">
@@ -78,16 +78,16 @@ function Userprofile() {
         </div>
 
         {/* Logout */}
-        <p
+        <div
           className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out flex items-center justify-between cursor-pointer"
           onClick={() => setIsModalOpen(true)}
         >
-          <div className="flex items-center">
+          <p className="flex items-center">
             <FiLogOut className="mr-3 text-gray-700 dark:text-gray-300 transition-colors duration-300 ease-in-out" />
             Logout
-          </div>
+          </p>
           <Rightarrow />
-        </p>
+        </div>
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </>

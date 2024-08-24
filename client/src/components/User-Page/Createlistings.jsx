@@ -137,7 +137,7 @@ function CreateListings() {
         setErrMsg("At least one image required");
         return;
       }
-      const res = await fetch("/api/v1/listings/new", {
+      const res = await fetch(`/api/v1/user/${currUser._id}/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

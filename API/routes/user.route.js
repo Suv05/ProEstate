@@ -1,9 +1,16 @@
 import express from "express";
-import { userProfileUpdate } from "../controllers/user.controler.js";
+import {
+  userProfileUpdate,
+  createListings,
+} from "../controllers/user.controler.js";
 import { verifyUserToken } from "../utility/verifyUserToken.js";
 
 const router = express.Router();
 
-router.route("/account/:id").post(verifyUserToken, userProfileUpdate);
+//for update account information
+router.route("/:id/account").post(verifyUserToken, userProfileUpdate);
+
+//for create new listings
+router.route("/:id/new").post(verifyUserToken, createListings);
 
 export default router;

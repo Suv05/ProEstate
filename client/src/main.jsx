@@ -30,7 +30,7 @@ const router = createBrowserRouter(
       <Route path="signin" element={<Signin />} />
       <Route element={<Protected />}>
         <Route path="account" element={<Account />} />
-        <Route path="addlistings" element={<Createlistings />} />
+        <Route path="new" element={<Createlistings />} />
       </Route>
     </Route>
   )

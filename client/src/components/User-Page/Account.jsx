@@ -92,7 +92,7 @@ function Account({}) {
     try {
       dispatch(updateStart());
 
-      const res = await fetch(`/api/v1/user/account/${currUser._id}`, {
+      const res = await fetch(`/api/v1/user/${currUser._id}/account`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
