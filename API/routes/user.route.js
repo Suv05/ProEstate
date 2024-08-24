@@ -2,6 +2,7 @@ import express from "express";
 import {
   userProfileUpdate,
   createListings,
+  viewListings,
 } from "../controllers/user.controler.js";
 import { verifyUserToken } from "../utility/verifyUserToken.js";
 
@@ -12,5 +13,8 @@ router.route("/:id/account").post(verifyUserToken, userProfileUpdate);
 
 //for create new listings
 router.route("/:id/new").post(verifyUserToken, createListings);
+
+//for view your own listings
+router.route("/:id/proEstate").get(verifyUserToken, viewListings);
 
 export default router;

@@ -8,7 +8,6 @@ import AppError from "../error/AppError.js";
 import User from "../models/user.model.js";
 import Listings from "../models/listings.model.js";
 
-
 //for update account information
 export const userProfileUpdate = async (req, res, next) => {
   if (req.user.id !== req.params.id) {
@@ -37,7 +36,6 @@ export const userProfileUpdate = async (req, res, next) => {
     .json({ msg: "Sucessfuly update account information", updateUser });
 };
 
-
 //for create new listings
 export const createListings = async (req, res, next) => {
   const listings = await Listings.create({ ...req.body });
@@ -52,4 +50,16 @@ export const createListings = async (req, res, next) => {
   res
     .status(StatusCodes.CREATED)
     .json({ msg: "Listing created successfuly", listings });
+};
+
+//for view your own listings
+export const viewListings = async (req, res, next) => {
+  if (req.user.id === req.params.id) {
+    const listings = await Listings.find({ userRef: req.params.id });
+    res
+      .status(StatusCodes.ACCEPTED)
+      .json({ msg: "Here is your listings", listings });
+  } else {
+    res.status(StatusCodes.FORBIDDEN).json({ msg: "Your access denied" });
+  }
 };
