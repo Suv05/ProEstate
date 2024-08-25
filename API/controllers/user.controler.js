@@ -57,9 +57,32 @@ export const viewListings = async (req, res, next) => {
   if (req.user.id === req.params.id) {
     const listings = await Listings.find({ userRef: req.params.id });
     res
-      .status(StatusCodes.ACCEPTED)
+      .status(StatusCodes.OK)
       .json({ msg: "Here is your listings", listings });
   } else {
     res.status(StatusCodes.FORBIDDEN).json({ msg: "Your access denied" });
   }
+};
+
+//for delete your listed properties
+export const deleteListing = async (req, res, next) => {
+  const listing = await Listings.findById(req.params.listingId);
+  if (!listing) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ msg: "Listing is not found 😔" });
+  }
+
+  // Ensure the user owns the listing
+  if (req.user.id.toString() !== listing.userRef.toString()) {
+    return res
+      .status(StatusCodes.FORBIDDEN)
+      .json({ msg: "Access denied. You can't delete this listing." });
+  }
+
+  await Listings.findByIdAndDelete(req.params.listingId);
+
+  res
+    .status(StatusCodes.ACCEPTED)
+    .json({ msg: "Your listing deleted sucessfuly" });
 };

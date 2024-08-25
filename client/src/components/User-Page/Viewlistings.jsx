@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { FaRegEdit, FaTrashAlt, FaBed, FaBath, FaCar } from "react-icons/fa";
+import { MdOutlinePets } from "react-icons/md";
 
 //utilities
 import Spinner from "../utilities/Spinner";
@@ -10,27 +11,50 @@ import Broken from "../utilities/Broken";
 
 function Viewlistings({}) {
   const { currUser } = useSelector((state) => state.user);
+  const queryClient = useQueryClient();
 
-  const fetchListings = async () => {
-    const response = await fetch(`/api/v1/user/${currUser._id}/proEstate`);
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  };
-
+  // Fetch listings data
   const { data, isLoading, error } = useQuery({
     queryKey: ["listings", currUser._id],
-    queryFn: fetchListings,
+    queryFn: async () => {
+      const response = await fetch(`/api/v1/user/${currUser._id}/proEstate`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
   });
+
+  // Mutation to delete a listing
+  const deleteMutation = useMutation({
+    mutationFn: async (listingId) => {
+      const response = await fetch(
+        `/api/v1/user/${currUser._id}/proEstate/${listingId}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete the listing");
+      }
+    },
+    onSuccess: () => {
+      // Invalidate the listings query to refetch the updated data
+      queryClient.invalidateQueries(["listings", currUser._id]);
+    },
+  });
+
+  const onDelete = (listingId) => {
+    deleteMutation.mutate(listingId);
+  };
 
   if (isLoading) return <Spinner />;
   if (error) return <Broken />;
 
-  const listings = data?.listings; // Extract the listings array from the data object
+  const listings = data?.listings;
 
   if (!Array.isArray(listings)) {
-    return <Broken />; // Handle the case where listings is not an array
+    return <Broken />;
   }
 
   return (
@@ -94,8 +118,20 @@ function Viewlistings({}) {
                   <span>{listing.bathrooms} Baths</span>
                 </span>
                 <span className="flex items-center space-x-2 hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
-                  <FaCar />
-                  <span>{listing.parking ? "Parking" : "No Parking"}</span>
+                  {listing.parking ? (
+                    <FaCar />
+                  ) : listing.petsAllowed ? (
+                    <MdOutlinePets />
+                  ) : (
+                    <FaCar />
+                  )}
+                  <span>
+                    {listing.parking
+                      ? "Parking"
+                      : listing.petsAllowed
+                      ? "Pets Allowed"
+                      : "No Parking"}
+                  </span>
                 </span>
               </div>
             </div>
