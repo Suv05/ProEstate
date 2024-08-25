@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
 import { FiMapPin, FiPhoneCall, FiShare2, FiCalendar } from "react-icons/fi";
 import { FaBath, FaBed, FaCouch, FaParking, FaPaw } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa6";
+
+
 import ImageCarousel from "../utilities/ImageCarousel";
+import ContactOwner from "../utilities/ContactOwner";
 
 //utilities
 import Spinner from "../utilities/Spinner";
@@ -14,6 +18,7 @@ import Broken from "../utilities/Broken";
 function Listingitem({}) {
   const { currUser } = useSelector((state) => state.user);
   const { listingId } = useParams();
+  const [showMore, setShowMore] = useState(false);
 
   // Fetch listings data
   const { data, isLoading, error } = useQuery({
@@ -54,12 +59,30 @@ function Listingitem({}) {
         <div className="rounded-lg overflow-hidden shadow-lg mb-6 pb-3">
           <ImageCarousel images={listing.imageUrls} />
         </div>
-
+        <hr className="mb-6" />
         {/* Main Content */}
         <div className="mt-6">
+          <h1 className="text-2xl font-semibold text-[#222222] px-6">
+            About this place
+          </h1>
           {/* Description */}
           <div className="bg-white p-6 rounded-lg shadow-lg mb-4">
-            <p className="text-xl text-[#333] mb-4">{listing.description}</p>
+            <p
+              className={`text-xl text-[#323232] mb-4 ${
+                showMore ? null : "line-clamp-4"
+              }`}
+            >
+              {listing.description}
+            </p>
+            <button
+              className="flex items-center justify-between underline text-lg font-medium text-[#323232] hover:text-[#010101] mb-3"
+              onClick={() => setShowMore(!showMore)}
+            >
+              <span>{showMore ? "Show less" : "Show more"}</span>
+              <span className="ml-1">
+                <FaAngleRight />
+              </span>
+            </button>
 
             {/* Pricing */}
             <div className="flex items-center space-x-4">
@@ -143,12 +166,7 @@ function Listingitem({}) {
         </div>
 
         {/* Contact Section */}
-        <div className="mt-8 flex space-x-4">
-          <button className="btn-primary flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-6 rounded-full shadow-lg transform hover:scale-105 transition-transform">
-            <FiPhoneCall className="text-lg" />
-            <span>Contact Owner</span>
-          </button>
-        </div>
+        <ContactOwner/>
 
         {/* Footer Section */}
         <div className="mt-8 text-primary flex items-center">
