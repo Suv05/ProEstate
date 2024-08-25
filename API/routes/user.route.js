@@ -4,6 +4,7 @@ import {
   createListings,
   viewListings,
   deleteListing,
+  viewSingleListing
 } from "../controllers/user.controler.js";
 import { verifyUserToken } from "../utility/verifyUserToken.js";
 
@@ -18,7 +19,10 @@ router.route("/:id/new").post(verifyUserToken, createListings);
 //for view your own listings
 router.route("/:id/proEstate").get(verifyUserToken, viewListings);
 
-//for delete a single listing
-router.route("/:id/proEstate/:listingId").delete(verifyUserToken, deleteListing);
+//for delete and view a single listing
+router
+  .route("/:id/proEstate/:listingId")
+  .delete(verifyUserToken, deleteListing)
+  .get(verifyUserToken, viewSingleListing);
 
 export default router;

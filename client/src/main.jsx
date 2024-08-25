@@ -25,6 +25,7 @@ import Protected from "./components/routes/Protected.jsx";
 import Createlistings from "./components/User-Page/Createlistings.jsx";
 import Viewlistings from "./components/User-Page/Viewlistings.jsx";
 import Account from "./components/User-Page/Account.jsx";
+import Listingitem from "./components/User-Page/Listingitem.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         <Route path="/account" element={<Account />} />
         <Route path="/new" element={<Createlistings />} />
         <Route path="/yourestate" element={<Viewlistings />} />
+        <Route path="/yourestate/:listingId" element={<Listingitem />} />
       </Route>
     </Route>
   )

@@ -56,9 +56,7 @@ export const createListings = async (req, res, next) => {
 export const viewListings = async (req, res, next) => {
   if (req.user.id === req.params.id) {
     const listings = await Listings.find({ userRef: req.params.id });
-    res
-      .status(StatusCodes.OK)
-      .json({ msg: "Here is your listings", listings });
+    res.status(StatusCodes.OK).json({ msg: "Here is your listings", listings });
   } else {
     res.status(StatusCodes.FORBIDDEN).json({ msg: "Your access denied" });
   }
@@ -85,4 +83,26 @@ export const deleteListing = async (req, res, next) => {
   res
     .status(StatusCodes.ACCEPTED)
     .json({ msg: "Your listing deleted sucessfuly" });
+};
+
+//for view a single listing from your all posted listings
+export const viewSingleListing = async (req, res, next) => {
+  const listing = await Listings.findById(req.params.listingId);
+
+  if (!listing) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ msg: "Listing is not found 😔" });
+  }
+
+  // Ensure the user owns the listing
+  if (req.user.id.toString() !== listing.userRef.toString()) {
+    return res
+      .status(StatusCodes.FORBIDDEN)
+      .json({ msg: "Access denied. You can't view this listing." });
+  }
+
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: "Your listing deleted sucessfuly", listing });
 };
