@@ -37,126 +37,125 @@ function Listingitem({}) {
   return (
     <>
       <div className="max-w-5xl mx-auto p-6 font-sans">
-  {/* Header Section */}
-  <div className="flex justify-between items-start">
-        <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold mb-2 hover:underline text-[#222222]">
-          {listing.title}
-        </h1>
-        <button className="gradient-button animate-gradient rounded-full p-3 text-white shadow-lg transform hover:scale-105">
-          <FiShare2 className="text-lg" />
-        </button>
+        {/* Header Section */}
+        <div className="flex justify-between items-start">
+          <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold mb-2 hover:underline text-[#222222]">
+            {listing.title}
+          </h1>
+          <button className="gradient-button animate-gradient rounded-full p-3 text-white shadow-lg transform hover:scale-105">
+            <FiShare2 className="text-lg" />
+          </button>
+        </div>
+        <div className="text-theme flex items-center mb-6">
+          <FiMapPin className="mr-2" /> {listing.location}
+        </div>
+
+        {/* Image Carousel */}
+        <div className="rounded-lg overflow-hidden shadow-lg mb-6 pb-3">
+          <ImageCarousel images={listing.imageUrls} />
+        </div>
+
+        {/* Main Content */}
+        <div className="mt-6">
+          {/* Description */}
+          <div className="bg-white p-6 rounded-lg shadow-lg mb-4">
+            <p className="text-xl text-[#333] mb-4">{listing.description}</p>
+
+            {/* Pricing */}
+            <div className="flex items-center space-x-4">
+              {listing.discountPrice && (
+                <span className="text-2xl font-extrabold text-primary">
+                  ${listing.regularPrice - listing.discountPrice}
+                </span>
+              )}
+              <span className="text-sm text-gray-500 line-through">
+                ${listing.regularPrice}
+              </span>
+              {listing.specialOffer ? (
+                <span className="text-lg text-green-600 font-bold animate-pulse">
+                  Extra 5% off with special offer
+                </span>
+              ) : (
+                <span className="text-lg text-red-500 font-bold">
+                  -
+                  {Math.floor(
+                    ((listing.regularPrice - listing.discountPrice) /
+                      listing.regularPrice) *
+                      100
+                  )}
+                  % Off
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Amenities */}
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="flex items-center space-x-2">
+                <FaBath className="text-2xl text-blue-500" />
+                <span className="text-lg font-medium text-[#444]">
+                  {listing.bathrooms} Bathrooms
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <FaBed className="text-2xl text-blue-500" />
+                <span className="text-lg font-medium text-[#444]">
+                  {listing.bedrooms} Bedrooms
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <FaCouch className="text-2xl text-blue-500" />
+                <span className="text-lg font-medium text-[#444]">
+                  {listing.furnished ? "Furnished" : "Not Furnished"}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <FaParking className="text-2xl text-blue-500" />
+                <span className="text-lg font-medium text-[#444]">
+                  {listing.parking ? "Parking Available" : "No Parking"}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <FaPaw className="text-2xl text-blue-500" />
+                <span className="text-lg font-medium text-[#444]">
+                  {listing.petsAllowed ? "Pets Allowed" : "No Pets"}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Category & Status */}
+          <div className="mt-6 flex space-x-4">
+            <span className="capitalize bg-gradient-to-r from-blue-500 to-purple-500 text-white py-1 px-4 rounded-full text-sm shadow-lg">
+              {listing.category}
+            </span>
+            <span
+              className={`capitalize py-1 px-4 rounded-full text-sm shadow-lg ${
+                listing.status === "available"
+                  ? "bg-gradient-to-r from-green-500 to-teal-500"
+                  : "bg-gradient-to-r from-red-500 to-pink-500"
+              } text-white`}
+            >
+              {listing.status}
+            </span>
+          </div>
+        </div>
+
+        {/* Contact Section */}
+        <div className="mt-8 flex space-x-4">
+          <button className="btn-primary flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-6 rounded-full shadow-lg transform hover:scale-105 transition-transform">
+            <FiPhoneCall className="text-lg" />
+            <span>Contact Owner</span>
+          </button>
+        </div>
+
+        {/* Footer Section */}
+        <div className="mt-8 text-primary flex items-center">
+          <FiCalendar className="mr-2" /> Listed on:{" "}
+          {new Date(listing.createdAt).toLocaleDateString()}
+        </div>
       </div>
-      <div className="text-theme flex items-center mb-6">
-        <FiMapPin className="mr-2" /> {listing.location}
-      </div>
-
-  {/* Image Carousel */}
-  <div className="rounded-lg overflow-hidden shadow-lg mb-6 pb-3">
-    <ImageCarousel images={listing.imageUrls} />
-  </div>
-
-  {/* Main Content */}
-  <div className="mt-6">
-    {/* Description */}
-    <div className="bg-white p-6 rounded-lg shadow-lg mb-4">
-      <p className="text-xl text-[#333] mb-4">{listing.description}</p>
-
-      {/* Pricing */}
-      <div className="flex items-center space-x-4">
-        {listing.discountPrice && (
-          <span className="text-2xl font-extrabold text-primary">
-            ${listing.regularPrice - listing.discountPrice}
-          </span>
-        )}
-        <span className="text-sm text-gray-500 line-through">
-          ${listing.regularPrice}
-        </span>
-        {listing.specialOffer ? (
-          <span className="text-lg text-green-600 font-bold animate-pulse">
-            Extra 5% off with special offer
-          </span>
-        ) : (
-          <span className="text-lg text-red-500 font-bold">
-            -
-            {Math.floor(
-              ((listing.regularPrice - listing.discountPrice) /
-                listing.regularPrice) *
-                100
-            )}
-            % Off
-          </span>
-        )}
-      </div>
-    </div>
-
-    {/* Amenities */}
-    <div className="bg-white p-6 rounded-lg shadow-lg">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-        <div className="flex items-center space-x-2">
-          <FaBath className="text-2xl text-blue-500" />
-          <span className="text-lg font-medium text-[#444]">
-            {listing.bathrooms} Bathrooms
-          </span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <FaBed className="text-2xl text-blue-500" />
-          <span className="text-lg font-medium text-[#444]">
-            {listing.bedrooms} Bedrooms
-          </span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <FaCouch className="text-2xl text-blue-500" />
-          <span className="text-lg font-medium text-[#444]">
-            {listing.furnished ? "Furnished" : "Not Furnished"}
-          </span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <FaParking className="text-2xl text-blue-500" />
-          <span className="text-lg font-medium text-[#444]">
-            {listing.parking ? "Parking Available" : "No Parking"}
-          </span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <FaPaw className="text-2xl text-blue-500" />
-          <span className="text-lg font-medium text-[#444]">
-            {listing.petsAllowed ? "Pets Allowed" : "No Pets"}
-          </span>
-        </div>
-      </div>
-    </div>
-
-    {/* Category & Status */}
-    <div className="mt-6 flex space-x-4">
-      <span className="capitalize bg-gradient-to-r from-blue-500 to-purple-500 text-white py-1 px-4 rounded-full text-sm shadow-lg">
-        {listing.category}
-      </span>
-      <span
-        className={`capitalize py-1 px-4 rounded-full text-sm shadow-lg ${
-          listing.status === "available"
-            ? "bg-gradient-to-r from-green-500 to-teal-500"
-            : "bg-gradient-to-r from-red-500 to-pink-500"
-        } text-white`}
-      >
-        {listing.status}
-      </span>
-    </div>
-  </div>
-
-  {/* Contact Section */}
-  <div className="mt-8 flex space-x-4">
-    <button className="btn-primary flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-6 rounded-full shadow-lg transform hover:scale-105 transition-transform">
-      <FiPhoneCall className="text-lg" />
-      <span>Contact Owner</span>
-    </button>
-  </div>
-
-  {/* Footer Section */}
-  <div className="mt-8 text-primary flex items-center">
-    <FiCalendar className="mr-2" /> Listed on:{" "}
-    {new Date(listing.createdAt).toLocaleDateString()}
-  </div>
-</div>
-
     </>
   );
 }
