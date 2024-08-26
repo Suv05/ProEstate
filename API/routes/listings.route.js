@@ -1,10 +1,9 @@
 import express from "express";
-
-import { createListings } from "../controllers/listings.controler.js";
-import { verifyUserToken } from "../utility/verifyUserToken.js";
+import { searchFunctionality } from "../controllers/listings.controler.js";
 
 const router = express.Router();
 
-router.route("/new").post(verifyUserToken, createListings);
+// For advanced search functionality
+router.route("/search").get(searchFunctionality);
 
 export default router;

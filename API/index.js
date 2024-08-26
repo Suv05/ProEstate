@@ -8,7 +8,7 @@ import createConnection from "./DB/connect.js";
 //routes config
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
-import listingRouter from "./routes/listings.route.js";
+import listingsRoute from "./routes/listings.route.js";
 
 //import error-handeler
 import { errorHandler } from "./middlewares/errorHandeler.js";
@@ -18,13 +18,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-//for consume json data
+//middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
-// app.use("/api/v1/listings", listingRouter);
+app.use("/api/v1/listings", listingsRoute);
 
 app.use(errorHandler);
 
