@@ -13,7 +13,6 @@ const ContactOwner = ({ subject, email }) => {
   const onSubmit = (data) => {
     setMsg(data);
   };
-  console.log(msg);
 
   return (
     <div className="mt-8 flex justify-center">

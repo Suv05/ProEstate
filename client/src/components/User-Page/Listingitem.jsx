@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
-import { FiMapPin, FiPhoneCall, FiShare2, FiCalendar } from "react-icons/fi";
+import { FiMapPin, FiCalendar } from "react-icons/fi";
 import { FaBath, FaBed, FaCouch, FaParking, FaPaw } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa6";
 
-
 import ImageCarousel from "../utilities/ImageCarousel";
 import ContactOwner from "../utilities/ContactOwner";
+import Sharebtn from "../utilities/Sharebtn";
 
 //utilities
 import Spinner from "../utilities/Spinner";
@@ -47,9 +47,7 @@ function Listingitem({}) {
           <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold mb-2 hover:underline text-[#222222]">
             {listing.title}
           </h1>
-          <button className="gradient-button animate-gradient rounded-full p-3 text-white shadow-lg transform hover:scale-105">
-            <FiShare2 className="text-lg" />
-          </button>
+          <Sharebtn />
         </div>
         <div className="text-theme flex items-center mb-6">
           <FiMapPin className="mr-2" /> {listing.location}
@@ -166,7 +164,9 @@ function Listingitem({}) {
         </div>
 
         {/* Contact Section */}
-        <ContactOwner/>
+        {currUser && currUser._id !== listing.userRef && (
+          <ContactOwner email={currUser.email} subject={listing.title} />
+        )}
 
         {/* Footer Section */}
         <div className="mt-8 text-primary flex items-center">
