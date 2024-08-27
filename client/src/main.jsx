@@ -26,6 +26,7 @@ import Createlistings from "./components/User-Page/Createlistings.jsx";
 import Viewlistings from "./components/User-Page/Viewlistings.jsx";
 import Account from "./components/User-Page/Account.jsx";
 import Listingitem from "./components/User-Page/Listingitem.jsx";
+import SearchPage from "./components/pages/SearchPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
+      <Route path="explore" element={<SearchPage />} />
       <Route element={<Protected />}>
         <Route path="/account" element={<Account />} />
         <Route path="/new" element={<Createlistings />} />
