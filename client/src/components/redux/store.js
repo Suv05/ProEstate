@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; //defaults to localStorage for web
 import userReducer from "./user/userSlice.js";
+import searchReducer from "./search/searchSlice.js";
 
 // Configuration for redux-persist
 const persistConfig = {
@@ -14,6 +15,7 @@ const persistConfig = {
 // Combine your reducers (if you have multiple slices)
 const rootReducer = combineReducers({
   user: userReducer, // Add your slices here
+  search: searchReducer,
 });
 
 //Persist the root reducer
