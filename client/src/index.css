@@ -73,3 +73,62 @@
 .btn-primary:hover {
   transform: scale(1.05);
 }
+.range-thumb::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background-color: #4f46e5;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.range-thumb::-webkit-slider-thumb:hover {
+  background-color: #4338ca;
+}
+
+.range-thumb::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background-color: #4f46e5;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.range-thumb::-moz-range-thumb:hover {
+  background-color: #4338ca;
+}
+
+.range-thumb {
+  pointer-events: auto;
+}
+label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="radio"]:focus-visible + span {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
