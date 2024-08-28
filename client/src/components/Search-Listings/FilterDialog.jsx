@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import FilterComponent from "./FilterComponent";
 
-const FilterDialog = ({ onFilterChange }) => {
+const FilterDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDialog = () => setIsOpen(true);
   const closeDialog = () => setIsOpen(false);
-
-  const handleFilterChange = (filters) => {
-    onFilterChange(filters);
-    closeDialog();
-  };
 
   return (
     <div>
@@ -54,7 +49,7 @@ const FilterDialog = ({ onFilterChange }) => {
                 />
               </svg>
             </button>
-            <FilterComponent onFilterChange={handleFilterChange} />
+            <FilterComponent onClose={closeDialog} />
           </div>
         </div>
       )}

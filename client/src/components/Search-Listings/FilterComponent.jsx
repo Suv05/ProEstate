@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import PriceRange from "./PriceRange";
+import { useDispatch } from "react-redux";
+import { setFilters } from "../redux/search/searchSlice.js";
 
-const FilterComponent = ({ onFilterChange }) => {
+const FilterComponent = ({ onClose }) => {
+  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [offer, setOffer] = useState("all");
   const [furnished, setFurnished] = useState("all");
@@ -17,24 +20,18 @@ const FilterComponent = ({ onFilterChange }) => {
 
   const handleApplyFilters = () => {
     const filters = {
-      category: selectedCategory.length ? selectedCategory : "all",
+      category: selectedCategory,
       offer,
       furnished,
       parking,
     };
-    onFilterChange(filters);
+    //after applying filters, close the dialog
+    dispatch(setFilters(filters));
+    onClose(); // Close the dialog
   };
 
   return (
     <div className="relative w-full max-w-md md:max-w-lg mx-4 md:mx-0 bg-white rounded-lg shadow-lg overflow-hidden">
-      {/* Close Button */}
-      {/* <button
-        onClick={() => onFilterChange(null)} // Handle close logic by passing null or any value to close the dialog
-        className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl md:text-3xl"
-      >
-        &times;
-      </button> */}
-
       {/* Dialog Content */}
       <div className="p-4 md:p-6 space-y-4 md:space-y-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
         {/* Category */}
@@ -89,7 +86,9 @@ const FilterComponent = ({ onFilterChange }) => {
 
         {/* Furnished */}
         <div className="p-4 bg-white shadow-lg rounded-lg">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Furnished</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-800">
+            Furnished
+          </h3>
           <hr className="mb-4 border-gray-300" />
           <div className="flex flex-wrap gap-2">
             {["true", "false", "all"].map((value) => (
