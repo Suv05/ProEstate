@@ -67,3 +67,19 @@ export const searchFunctionality = async (req, res, next) => {
 
   return res.status(StatusCodes.OK).json({ listing });
 };
+
+
+//to get all listings
+export const getAllListings = async (req, res, next) => {
+  const listings = await Listings.find({});
+  if(!listings){
+    throw new ErrorResponse("No listings found", StatusCodes.NOT_FOUND);
+  }
+  return res.status(StatusCodes.OK).json({ listings });
+};
+
+//to get a single listing
+export const getSingleListing = async (req, res, next) => {
+  const listing = await Listings.findById(req.params.id);
+  return res.status(StatusCodes.OK).json({ listing });
+};
