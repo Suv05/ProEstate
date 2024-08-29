@@ -132,3 +132,11 @@ button:focus-visible {
   outline: 2px solid #4f46e5;
   outline-offset: 2px;
 }
+.myImg {
+  background-image: url("https://media.istockphoto.com/id/1700606835/photo/swimming-pool-in-backyard-exterior-of-extraordinary-luxury-home.webp?b=1&s=612x612&w=0&k=20&c=03cavr5HeW43M8Ds4CGWw_7mJik2fdUZHvdpwX0NPJA=");
+  background-size: cover; /* Make sure the image covers the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  /*height: 100vh; Ensure the div has height */
+  width: 100%; /* Ensure the div spans the full width */
+}
