@@ -1,7 +1,5 @@
 import "express-async-errors";
 import { StatusCodes } from "http-status-codes";
-
-//models
 import Listings from "../models/listings.model.js";
 
 export const searchFunctionality = async (req, res, next) => {
@@ -11,29 +9,45 @@ export const searchFunctionality = async (req, res, next) => {
   // Offer search
   let offer = req.query.offer;
 
-  if (offer === undefined || offer === "false") {
+  if (offer === "all") {
     offer = { $in: [false, true] };
+  } else if (offer === "true") {
+    offer = true;
+  } else {
+    offer = false;
   }
 
   // Furnished search
   let furnished = req.query.furnished;
 
-  if (furnished === undefined || furnished === "false") {
+  if (furnished === "all") {
     furnished = { $in: [false, true] };
+  } else if (furnished === "true") {
+    furnished = true;
+  } else {
+    furnished = false;
   }
 
   // Parking search
   let parking = req.query.parking;
 
-  if (parking === undefined || parking === "false") {
+  if (parking === "all") {
     parking = { $in: [false, true] };
+  } else if (parking === "true") {
+    parking = true;
+  } else {
+    parking = false;
   }
 
   // Category
   let category = req.query.category;
 
-  if (category === undefined || category === "all") {
+  if (!category || category === "all") {
     category = { $in: ["house", "apartment", "condo", "studio"] };
+  } else if (Array.isArray(category)) {
+    category = { $in: category };
+  } else {
+    category = { $in: [category] };
   }
 
   const searchTerm = req.query.searchTerm || "";
