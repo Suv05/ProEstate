@@ -29,4 +29,5 @@ router.route("/price").get(getListingsByPrice);
 
 //to get single listing
 router.route("/:id").get(getSingleListing);
+
 export default router;
