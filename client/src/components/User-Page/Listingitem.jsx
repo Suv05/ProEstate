@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { FiMapPin, FiCalendar } from "react-icons/fi";
 import { FaBath, FaBed, FaCouch, FaParking, FaPaw } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleRight, FaArrowLeftLong } from "react-icons/fa6";
 
 import ImageCarousel from "../utilities/ImageCarousel";
 import ContactOwner from "../utilities/ContactOwner";

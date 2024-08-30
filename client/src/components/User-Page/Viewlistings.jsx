@@ -59,6 +59,18 @@ function Viewlistings({}) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 font-sans">
+      {/* when there is no listings to show */}
+      {listings.length === 0 && (
+        <div className="text-center mt-5">
+          <h1 className="text-3xl text-[#323232] font-bold">
+            No Listings to so for now 😔
+          </h1>
+          <Link to="/new">
+            <button className="text-xl border border-theme rounded-lg mt-3 hover:bg-theme hover:text-white hover:rounded-b-sm">Create One</button>
+          </Link>
+        </div>
+      )}
+
       {listings.map((listing) => (
         <Link to={`/yourestate/${listing._id}`} key={listing._id}>
           <div className="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
