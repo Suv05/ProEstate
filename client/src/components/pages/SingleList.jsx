@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { FiMapPin, FiCalendar } from "react-icons/fi";
 import { FaBath, FaBed, FaCouch, FaParking, FaPaw } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleRight, FaArrowLeftLong } from "react-icons/fa6";
 
 import ImageCarousel from "../utilities/ImageCarousel";
 import ContactOwner from "../utilities/ContactOwner";
@@ -15,18 +15,16 @@ import Sharebtn from "../utilities/Sharebtn";
 import Spinner from "../utilities/Spinner";
 import Broken from "../utilities/Broken";
 
-function Listingitem({}) {
-  const { currUser } = useSelector((state) => state.user);
-  const { listingId } = useParams();
+function SingleList({}) {
+  const { id } = useParams();
   const [showMore, setShowMore] = useState(false);
+  const { currUser } = useSelector((state) => state.user);
 
   // Fetch listings data
   const { data, isLoading, error } = useQuery({
-    queryKey: ["listing", listingId],
+    queryKey: ["listing", id],
     queryFn: async () => {
-      const response = await fetch(
-        `/api/v1/user/${currUser._id}/proEstate/${listingId}`
-      );
+      const response = await fetch(`/api/v1/listings/${id}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -38,10 +36,8 @@ function Listingitem({}) {
   if (error) return <Broken />;
 
   const listing = data?.listing;
-
   return (
     <>
-      {/* back to action button  */}
       <Link to=".." relative="path">
         <div className="text-theme flex items-center px-6 mt-3 hover:font-semibold hover:underline">
           <FaArrowLeftLong size={25} className="me-2" />
@@ -185,4 +181,4 @@ function Listingitem({}) {
   );
 }
 
-export default Listingitem;
+export default SingleList;
