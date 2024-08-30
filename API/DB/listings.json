@@ -1,0 +1,655 @@
+[
+  {
+    "title": "Bright and Airy Studio",
+    "description": "A cozy and modern studio apartment located in the heart of the city. Perfect for singles or couples looking for a comfortable stay.",
+    "location": "New York, USA",
+    "regularPrice": 4500,
+    "discountPrice": 3500,
+    "bathrooms": 1,
+    "bedrooms": 1,
+    "furnished": true,
+    "parking": false,
+    "category": "studio",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1326994520/photo/we-all-deserve-a-fresh-break-from-the-city.webp?b=1&s=612x612&w=0&k=20&c=bN1WR4GJ6yC8qwj20avLRM3npQe_aed69kjYrmF1Suk=",
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU=",
+      "https://media.istockphoto.com/id/1661475806/photo/family-gathered-at-the-table-at-home.webp?b=1&s=612x612&w=0&k=20&c=Kllj_iCGwCtaUTCyIu46YX-mQln3xXGJ3gQ3stbq58E="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Luxury Oceanfront Condo",
+    "description": "This elegant oceanfront condo offers stunning views and top-notch amenities for a relaxing vacation.",
+    "location": "Miami, USA",
+    "regularPrice": 12000,
+    "discountPrice": 9500,
+    "bathrooms": 3,
+    "bedrooms": 4,
+    "furnished": true,
+    "parking": true,
+    "category": "condo",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1700606835/photo/swimming-pool-in-backyard-exterior-of-extraordinary-luxury-home.webp?b=1&s=612x612&w=0&k=20&c=03cavr5HeW43M8Ds4CGWw_7mJik2fdUZHvdpwX0NPJA=",
+      "https://media.istockphoto.com/id/1456467041/photo/beautiful-kitchen-in-new-farmhouse-style-luxury-home-with-island-pendant-lights-and-hardwood.webp?b=1&s=612x612&w=0&k=20&c=OrCOnx9RVNajEyTwhbwgvTio_vmG1NQDdwx-sF88clE=",
+      "https://media.istockphoto.com/id/1482779314/photo/modern-living-room-interior.webp?b=1&s=612x612&w=0&k=20&c=tRhJS0CHBPrvJTO-9nhNmuHRoEEhTT45sliyOlZAcQk="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Charming Country House",
+    "description": "Escape to the countryside in this charming house surrounded by nature. Ideal for families.",
+    "location": "Kent, England",
+    "regularPrice": 8000,
+    "discountPrice": 7000,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": false,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/2155901088/photo/exterior-view-of-a-contemporary-new-home-in-los-angeles.webp?b=1&s=612x612&w=0&k=20&c=OtZoGSob5SEREOJVtLdWODeuwRf3IdXbY_tipAywgBU=",
+      "https://media.istockphoto.com/id/1213695547/photo/3d-rendering-of-an-elegant-bedroom.webp?b=1&s=612x612&w=0&k=20&c=SXgsSUdhOAdzu_2uNyx_5Ee-u8o4_k5QPVL6sbuuA_0=",
+      "https://media.istockphoto.com/id/1476189571/photo/living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=OfiXDp24bYA9Zy4rQAGSJI8ucMSWT1cVYXWcL8ZV6ck="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Urban Loft with City Views",
+    "description": "Experience the city life in this stylish urban loft with panoramic city views.",
+    "location": "Berlin, Germany",
+    "regularPrice": 6000,
+    "discountPrice": 5000,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": false,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/535698559/photo/beautiful-new-furnished-living-room-in-new-luxury-home.webp?b=1&s=612x612&w=0&k=20&c=-i9aAnQlTnBd8NwqHFbUgSCHiWM95I-mdX-3OJfC2Zc=",
+      "https://media.istockphoto.com/id/1321598038/photo/modern-luxury-holiday-villa-at-seaside.webp?b=1&s=612x612&w=0&k=20&c=1PY1nEwhguyDnplHhNskJL5jzNQPIm-HtBh9ssNTewo=",
+      "https://media.istockphoto.com/id/1476189501/photo/luxury-kitchen-and-living-room.webp?b=1&s=612x612&w=0&k=20&c=2K6PrirZUHgZX4bCUSGHyQ8RZRHLQ6D-6PJ-8aYTv68="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Beachside Bungalow",
+    "description": "A charming bungalow just steps away from the beach. Perfect for a peaceful retreat.",
+    "location": "Sydney, Australia",
+    "regularPrice": 7000,
+    "discountPrice": 6000,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1326994520/photo/we-all-deserve-a-fresh-break-from-the-city.webp?b=1&s=612x612&w=0&k=20&c=bN1WR4GJ6yC8qwj20avLRM3npQe_aed69kjYrmF1Suk=",
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU=",
+      "https://media.istockphoto.com/id/1363817537/photo/luxury-modern-house-interior-with-corner-sofa-bookshelf-and-staircase.webp?b=1&s=612x612&w=0&k=20&c=8s4NymoWucVzuToRj6U-QofofWIJTNbh42g1JzHa6G4="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Modern Downtown Apartment",
+    "description": "This sleek and modern apartment is located in the heart of downtown, close to all major attractions.",
+    "location": "Los Angeles, USA",
+    "regularPrice": 5000,
+    "discountPrice": 4500,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": true,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1363817537/photo/luxury-modern-house-interior-with-corner-sofa-bookshelf-and-staircase.webp?b=1&s=612x612&w=0&k=20&c=8s4NymoWucVzuToRj6U-QofofWIJTNbh42g1JzHa6G4=",
+      "https://plus.unsplash.com/premium_photo-1661915661139-5b6a4e4a6fcc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Mountain Retreat Cabin",
+    "description": "Enjoy a tranquil getaway in this cozy cabin surrounded by nature and mountain views.",
+    "location": "Aspen, USA",
+    "regularPrice": 9000,
+    "discountPrice": 8500,
+    "bathrooms": 2,
+    "bedrooms": 4,
+    "furnished": false,
+    "parking": true,
+    "category": "house",
+    "offer": true,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://media.istockphoto.com/id/1213695547/photo/3d-rendering-of-an-elegant-bedroom.webp?b=1&s=612x612&w=0&k=20&c=SXgsSUdhOAdzu_2uNyx_5Ee-u8o4_k5QPVL6sbuuA_0=",
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Luxury Penthouse Suite",
+    "description": "Live in style with this luxury penthouse suite offering breathtaking city views.",
+    "location": "Dubai, UAE",
+    "regularPrice": 15000,
+    "discountPrice": 12000,
+    "bathrooms": 3,
+    "bedrooms": 5,
+    "furnished": true,
+    "parking": true,
+    "category": "condo",
+    "offer": true,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://media.istockphoto.com/id/1363817537/photo/luxury-modern-house-interior-with-corner-sofa-bookshelf-and-staircase.webp?b=1&s=612x612&w=0&k=20&c=8s4NymoWucVzuToRj6U-QofofWIJTNbh42g1JzHa6G4=",
+      "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Cozy Suburban Home",
+    "description": "A warm and inviting home located in a quiet suburban neighborhood. Great for families.",
+    "location": "Toronto, Canada",
+    "regularPrice": 6000,
+    "discountPrice": 5000,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": false,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://plus.unsplash.com/premium_photo-1661883964999-c1bcb57a7357?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww",
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU=",
+      "https://media.istockphoto.com/id/1456467041/photo/beautiful-kitchen-in-new-farmhouse-style-luxury-home-with-island-pendant-lights-and-hardwood.webp?b=1&s=612x612&w=0&k=20&c=OrCOnx9RVNajEyTwhbwgvTio_vmG1NQDdwx-sF88clE="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Spacious Family House",
+    "description": "A large family house with ample space for everyone. Perfect for family gatherings.",
+    "location": "Chicago, USA",
+    "regularPrice": 8000,
+    "discountPrice": 7500,
+    "bathrooms": 3,
+    "bedrooms": 5,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1254516548/photo/home-interior.jpg?s=612x612&w=0&k=20&c=iimqU5IZO5NLTB-GeCJr4TjCItoPBzyiQIfX9_MQd7I=",
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU=",
+      "https://media.istockphoto.com/id/2155901088/photo/exterior-view-of-a-contemporary-new-home-in-los-angeles.webp?b=1&s=612x612&w=0&k=20&c=OtZoGSob5SEREOJVtLdWODeuwRf3IdXbY_tipAywgBU="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Modern Studio Apartment",
+    "description": "A chic and modern studio apartment located in the heart of the city.",
+    "location": "San Francisco, USA",
+    "regularPrice": 4000,
+    "discountPrice": 3500,
+    "bathrooms": 1,
+    "bedrooms": 1,
+    "furnished": true,
+    "parking": false,
+    "category": "studio",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU=",
+      "https://plus.unsplash.com/premium_photo-1661915661139-5b6a4e4a6fcc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Riverside Apartment",
+    "description": "A stylish apartment with beautiful river views. Ideal for couples or professionals.",
+    "location": "Paris, France",
+    "regularPrice": 7000,
+    "discountPrice": 6500,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": true,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1193825927/photo/luxury-white-kitchen-design.jpg?s=612x612&w=0&k=20&c=pofrV0W6Atnd0S2xjeFSK_kBFzurvEivmnntN5OmLP8=",
+      "https://media.istockphoto.com/id/1156432390/photo/luxurious-interior-design-of-the-hall-in-a-big-house.jpg?s=612x612&w=0&k=20&c=V0lo1-NdtsuwUU5rynD57RDJqgTjYkbKQooOOExdl24="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Quiet Countryside Cottage",
+    "description": "A peaceful and charming cottage in the countryside, perfect for a relaxing retreat.",
+    "location": "Devon, England",
+    "regularPrice": 5000,
+    "discountPrice": 4500,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": false,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/535698559/photo/beautiful-new-furnished-living-room-in-new-luxury-home.jpg?s=612x612&w=0&k=20&c=djxZdIfg2ZKq2w_yx2JTEWNgWCG_bs1FOCLir4w_Pd0=",
+      "https://media.istockphoto.com/id/1150545984/photo/upscale-modern-mansion-with-pool.jpg?s=612x612&w=0&k=20&c=JT7qSGgmlGfiNiqJE2jw6rYwRcYCj9KBs7i2Rmyyypo="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Modern High-Rise Condo",
+    "description": "Experience luxury living in this modern high-rise condo with stunning city views.",
+    "location": "Tokyo, Japan",
+    "regularPrice": 9000,
+    "discountPrice": 8500,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": true,
+    "parking": true,
+    "category": "condo",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1700606835/photo/swimming-pool-in-backyard-exterior-of-extraordinary-luxury-home.webp?b=1&s=612x612&w=0&k=20&c=03cavr5HeW43M8Ds4CGWw_7mJik2fdUZHvdpwX0NPJA=",
+      "https://media.istockphoto.com/id/535698335/photo/beautiful-kitchen-in-luxury-home-with-island-and-stainless-steel.webp?b=1&s=612x612&w=0&k=20&c=rYusEWhs-AaeF95RkYGJ51CgCgkm4Cohk4S2pnEbbew="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Elegant Victorian House",
+    "description": "A beautiful Victorian house with timeless charm and modern amenities.",
+    "location": "Edinburgh, Scotland",
+    "regularPrice": 8000,
+    "discountPrice": 7500,
+    "bathrooms": 3,
+    "bedrooms": 4,
+    "furnished": false,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://media.istockphoto.com/id/1254516548/photo/home-interior.jpg?s=612x612&w=0&k=20&c=iimqU5IZO5NLTB-GeCJr4TjCItoPBzyiQIfX9_MQd7I="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Chic City Studio",
+    "description": "A chic and trendy studio apartment located in a vibrant city neighborhood.",
+    "location": "Barcelona, Spain",
+    "regularPrice": 4500,
+    "discountPrice": 4000,
+    "bathrooms": 1,
+    "bedrooms": 1,
+    "furnished": true,
+    "parking": false,
+    "category": "studio",
+    "offer": true,
+    "imageUrls": [
+      "https://plus.unsplash.com/premium_photo-1661883964999-c1bcb57a7357?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww",
+      "https://media.istockphoto.com/id/1150545984/photo/upscale-modern-mansion-with-pool.jpg?s=612x612&w=0&k=20&c=JT7qSGgmlGfiNiqJE2jw6rYwRcYCj9KBs7i2Rmyyypo="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Modern Suburban House",
+    "description": "A contemporary house located in a quiet suburban area, perfect for families.",
+    "location": "Melbourne, Australia",
+    "regularPrice": 7000,
+    "discountPrice": 6500,
+    "bathrooms": 2,
+    "bedrooms": 4,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1150545984/photo/upscale-modern-mansion-with-pool.jpg?s=612x612&w=0&k=20&c=JT7qSGgmlGfiNiqJE2jw6rYwRcYCj9KBs7i2Rmyyypo=",
+      "https://media.istockphoto.com/id/1254516548/photo/home-interior.jpg?s=612x612&w=0&k=20&c=iimqU5IZO5NLTB-GeCJr4TjCItoPBzyiQIfX9_MQd7I="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Beachfront Apartment",
+    "description": "A stunning beachfront apartment with direct access to the beach. Perfect for a seaside vacation.",
+    "location": "Nice, France",
+    "regularPrice": 10000,
+    "discountPrice": 9000,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": true,
+    "parking": true,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1476189501/photo/luxury-kitchen-and-living-room.webp?b=1&s=612x612&w=0&k=20&c=2K6PrirZUHgZX4bCUSGHyQ8RZRHLQ6D-6PJ-8aYTv68=",
+      "https://media.istockphoto.com/id/535698335/photo/beautiful-kitchen-in-luxury-home-with-island-and-stainless-steel.webp?b=1&s=612x612&w=0&k=20&c=rYusEWhs-AaeF95RkYGJ51CgCgkm4Cohk4S2pnEbbew="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Cozy Cabin in the Woods",
+    "description": "A rustic cabin nestled in the woods, perfect for a quiet retreat in nature.",
+    "location": "Vancouver, Canada",
+    "regularPrice": 6500,
+    "discountPrice": 6000,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": false,
+    "parking": true,
+    "category": "house",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1185068383/photo/modern-scandinavian-living-room-interior-3d-render.webp?b=1&s=612x612&w=0&k=20&c=tibXhw5bck7rR4qlhgf5aI2Itz_OkvaF9VuUC9wuh1w=",
+      "https://media.istockphoto.com/id/1254516548/photo/home-interior.jpg?s=612x612&w=0&k=20&c=iimqU5IZO5NLTB-GeCJr4TjCItoPBzyiQIfX9_MQd7I="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Urban Loft with Modern Amenities",
+    "description": "A trendy urban loft equipped with all the modern amenities you need for a comfortable stay.",
+    "location": "London, England",
+    "regularPrice": 6000,
+    "discountPrice": 5500,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": true,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1156432390/photo/luxurious-interior-design-of-the-hall-in-a-big-house.jpg?s=612x612&w=0&k=20&c=V0lo1-NdtsuwUU5rynD57RDJqgTjYkbKQooOOExdl24=",
+      "https://media.istockphoto.com/id/1213134164/photo/art-deco-interior-in-classic-style-with-pink-armchair-and-pillow-vase-on-table-dark-green.jpg?s=612x612&w=0&k=20&c=xLNj8p7wymf8iGIjo0jSFs-doo88bOdFn6DeCF7_Dys=",
+      "https://images.unsplash.com/photo-1561753757-d8880c5a3551?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Secluded Lakefront House",
+    "description": "A peaceful lakefront house offering privacy and stunning views. Perfect for nature lovers.",
+    "location": "Lake Tahoe, USA",
+    "regularPrice": 11000,
+    "discountPrice": 10000,
+    "bathrooms": 3,
+    "bedrooms": 4,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1561753757-d8880c5a3551?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww",
+      "https://media.istockphoto.com/id/1456467041/photo/beautiful-kitchen-in-new-farmhouse-style-luxury-home-with-island-pendant-lights-and-hardwood.webp?b=1&s=612x612&w=0&k=20&c=OrCOnx9RVNajEyTwhbwgvTio_vmG1NQDdwx-sF88clE="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Stylish Urban Apartment",
+    "description": "A stylish and modern apartment located in a bustling urban area, close to shops and restaurants.",
+    "location": "Madrid, Spain",
+    "regularPrice": 5500,
+    "discountPrice": 5000,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": false,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1321598038/photo/modern-luxury-holiday-villa-at-seaside.webp?b=1&s=612x612&w=0&k=20&c=1PY1nEwhguyDnplHhNskJL5jzNQPIm-HtBh9ssNTewo=",
+      "https://media.istockphoto.com/id/535698335/photo/beautiful-kitchen-in-luxury-home-with-island-and-stainless-steel.webp?b=1&s=612x612&w=0&k=20&c=rYusEWhs-AaeF95RkYGJ51CgCgkm4Cohk4S2pnEbbew="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Luxury Villa with Private Pool",
+    "description": "A luxurious villa with a private pool and stunning views, perfect for a lavish vacation.",
+    "location": "Santorini, Greece",
+    "regularPrice": 20000,
+    "discountPrice": 18000,
+    "bathrooms": 4,
+    "bedrooms": 6,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": true,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://media.istockphoto.com/id/1213695547/photo/3d-rendering-of-an-elegant-bedroom.webp?b=1&s=612x612&w=0&k=20&c=SXgsSUdhOAdzu_2uNyx_5Ee-u8o4_k5QPVL6sbuuA_0="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Modern Beach House",
+    "description": "A contemporary beach house with stunning ocean views, perfect for a relaxing getaway.",
+    "location": "Malibu, USA",
+    "regularPrice": 15000,
+    "discountPrice": 13000,
+    "bathrooms": 3,
+    "bedrooms": 5,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/185321544/photo/beautiful-house-in-florida.jpg?s=612x612&w=0&k=20&c=EsyEfWm4BUoCpEwpWXvFgGtn33l2zrvyoSW1jP--HL8=",
+      "https://media.istockphoto.com/id/1363817537/photo/luxury-modern-house-interior-with-corner-sofa-bookshelf-and-staircase.jpg?s=612x612&w=0&k=20&c=BY9EvrgL_VsQkTketnce0yv9lTEpvZkVw0Y9NkMoxN8="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Cozy Suburban Apartment",
+    "description": "A cozy and modern apartment located in a quiet suburban area, close to parks and schools.",
+    "location": "Auckland, New Zealand",
+    "regularPrice": 4000,
+    "discountPrice": 3500,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": true,
+    "category": "apartment",
+    "offer": false,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://media.istockphoto.com/id/1185068383/photo/modern-scandinavian-living-room-interior-3d-render.webp?b=1&s=612x612&w=0&k=20&c=tibXhw5bck7rR4qlhgf5aI2Itz_OkvaF9VuUC9wuh1w="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Charming Downtown Studio",
+    "description": "A charming studio apartment located in the heart of downtown, perfect for singles or couples.",
+    "location": "Vienna, Austria",
+    "regularPrice": 5000,
+    "discountPrice": 4500,
+    "bathrooms": 1,
+    "bedrooms": 1,
+    "furnished": true,
+    "parking": false,
+    "category": "studio",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1185068383/photo/modern-scandinavian-living-room-interior-3d-render.webp?b=1&s=612x612&w=0&k=20&c=tibXhw5bck7rR4qlhgf5aI2Itz_OkvaF9VuUC9wuh1w=",
+      "https://media.istockphoto.com/id/1213695547/photo/3d-rendering-of-an-elegant-bedroom.webp?b=1&s=612x612&w=0&k=20&c=SXgsSUdhOAdzu_2uNyx_5Ee-u8o4_k5QPVL6sbuuA_0="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Seaside Condo with Ocean Views",
+    "description": "A beautiful condo with panoramic ocean views, perfect for a beachside vacation.",
+    "location": "Honolulu, USA",
+    "regularPrice": 11000,
+    "discountPrice": 10000,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": true,
+    "parking": true,
+    "category": "condo",
+    "offer": true,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1531971589569-0d9370cbe1e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Modern Loft in the Heart of the City",
+    "description": "A sleek and modern loft located in the center of the city, close to all major attractions.",
+    "location": "New York, USA",
+    "regularPrice": 8500,
+    "discountPrice": 7500,
+    "bathrooms": 1,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": false,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/535698335/photo/beautiful-kitchen-in-luxury-home-with-island-and-stainless-steel.webp?b=1&s=612x612&w=0&k=20&c=rYusEWhs-AaeF95RkYGJ51CgCgkm4Cohk4S2pnEbbew=",
+      "https://media.istockphoto.com/id/1185068383/photo/modern-scandinavian-living-room-interior-3d-render.webp?b=1&s=612x612&w=0&k=20&c=tibXhw5bck7rR4qlhgf5aI2Itz_OkvaF9VuUC9wuh1w=",
+      "https://plus.unsplash.com/premium_photo-1661915661139-5b6a4e4a6fcc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bHV4dXJ5JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  },
+  {
+    "title": "Cozy Mountain Cabin",
+    "description": "A charming mountain cabin with rustic decor and modern amenities, perfect for a peaceful retreat.",
+    "location": "Aspen, USA",
+    "regularPrice": 9000,
+    "discountPrice": 8500,
+    "bathrooms": 2,
+    "bedrooms": 3,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://images.unsplash.com/photo-1561753757-d8880c5a3551?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww",
+      "https://media.istockphoto.com/id/1213695547/photo/3d-rendering-of-an-elegant-bedroom.webp?b=1&s=612x612&w=0&k=20&c=SXgsSUdhOAdzu_2uNyx_5Ee-u8o4_k5QPVL6sbuuA_0=",
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Elegant Townhouse in Historic District",
+    "description": "A beautifully restored townhouse located in a historic district, offering charm and modern comforts.",
+    "location": "Charleston, USA",
+    "regularPrice": 9500,
+    "discountPrice": 9000,
+    "bathrooms": 3,
+    "bedrooms": 4,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": false,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1476189571/photo/living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=OfiXDp24bYA9Zy4rQAGSJI8ucMSWT1cVYXWcL8ZV6ck=",
+      "https://plus.unsplash.com/premium_photo-1661883964999-c1bcb57a7357?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Spacious Suburban House",
+    "description": "A spacious and modern house located in a quiet suburban neighborhood, perfect for families.",
+    "location": "Toronto, Canada",
+    "regularPrice": 7000,
+    "discountPrice": 6500,
+    "bathrooms": 2,
+    "bedrooms": 4,
+    "furnished": true,
+    "parking": true,
+    "category": "house",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1456467041/photo/beautiful-kitchen-in-new-farmhouse-style-luxury-home-with-island-pendant-lights-and-hardwood.webp?b=1&s=612x612&w=0&k=20&c=OrCOnx9RVNajEyTwhbwgvTio_vmG1NQDdwx-sF88clE=",
+      "https://media.istockphoto.com/id/1326994520/photo/we-all-deserve-a-fresh-break-from-the-city.webp?b=1&s=612x612&w=0&k=20&c=bN1WR4GJ6yC8qwj20avLRM3npQe_aed69kjYrmF1Suk="
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": true,
+    "status": "available"
+  },
+  {
+    "title": "Stylish Urban Loft",
+    "description": "A trendy and modern loft located in a bustling urban area, close to all amenities.",
+    "location": "Berlin, Germany",
+    "regularPrice": 8000,
+    "discountPrice": 7500,
+    "bathrooms": 2,
+    "bedrooms": 2,
+    "furnished": true,
+    "parking": true,
+    "category": "apartment",
+    "offer": true,
+    "imageUrls": [
+      "https://media.istockphoto.com/id/1357529194/photo/3d-rendering-of-a-modern-styled-living-room-with-fireplace.webp?b=1&s=612x612&w=0&k=20&c=s-sW1UkB58XQ_dXKLfvUBJG3nf2iO_ExaELeMoQgbeU=",
+      "https://plus.unsplash.com/premium_photo-1661883964999-c1bcb57a7357?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGx1eHVyeSUyMGhvdXNlfGVufDB8fDB8fHww"
+    ],
+    "userRef": "66c8eb8956764460e74c1eac",
+    "petsAllowed": false,
+    "status": "available"
+  }
+]
