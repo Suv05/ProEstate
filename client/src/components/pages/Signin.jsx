@@ -46,7 +46,7 @@ function Signin() {
       const data = await res.json();
       dispatch(signInSuccess(data.validUser));
 
-      navigate("/");
+      navigate("/listings");
     } catch (error) {
       dispatch(signInFailure());
       setErrMsg("An error occurred. Please try again later.");

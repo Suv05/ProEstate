@@ -51,30 +51,44 @@ export const searchFunctionality = async (req, res, next) => {
   }
 
   const searchTerm = req.query.searchTerm || "";
-  const sort = req.query.sort || "createdAt";
-  const order = req.query.order || "desc";
+  // Map sort options
+  let sortField = req.query.sort || "createdAt"; // Default to createdAt if no sort is provided
+  let order = req.query.order || "desc"; // Default to descending order
 
-  const listing = await Listings.find({
+  if (sortField === "newCreated") {
+    sortField = "createdAt";
+    order = "desc"; // Ensure it sorts by newest first
+  } else if (sortField === "price") {
+    // Choose the appropriate field for sorting by price
+    sortField = "regularPrice"; // or "discountPrice" if that's preferred
+    order = "desc";
+  }
+
+  const listings = await Listings.find({
     title: { $regex: searchTerm, $options: "i" },
     offer,
     furnished,
     parking,
     category,
   })
-    .sort({ [sort]: order })
+    .sort({ [sortField]: order })
     .limit(limit)
     .skip(startIndex);
 
-  return res.status(StatusCodes.OK).json({ listing });
+  return res.status(StatusCodes.OK).json({ listings });
 };
-
 
 //to get all listings
 export const getAllListings = async (req, res, next) => {
-  const listings = await Listings.find({});
-  if(!listings){
-    throw new ErrorResponse("No listings found", StatusCodes.NOT_FOUND);
+  const limit = req.query.limit ? parseInt(req.query.limit, 10) : undefined;
+  const listings = await Listings.find({}).limit(limit);
+
+  if (!listings || listings.length === 0) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ message: "No listings found" });
   }
+
   return res.status(StatusCodes.OK).json({ listings });
 };
 

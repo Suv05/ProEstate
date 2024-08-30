@@ -31,7 +31,7 @@ function OAuth({}) {
 
       dispatch(signInSuccess(data.validUser));
 
-      navigate("/");
+      navigate("/listings");
     } catch (err) {
       console.log("Couldn't signin with google", err);
     }
