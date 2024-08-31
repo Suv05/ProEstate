@@ -37,13 +37,52 @@ function Header() {
     <header className="bg-white shadow-md font-sans">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <NavLink to={`/`}>
+        <NavLink
+          to={`/`}
+          className={({ isActive }) =>
+            isActive
+              ? "font-semibold text-theme underline transition duration-300"
+              : "hover:text-theme active:scale-75 hover:scale-105 font-bold transition duration-300"
+          }
+        >
           <div className="text-2xl font-bold text-gray-800">
             Pro<span className="text-theme hover:underline">Estate</span>
           </div>
         </NavLink>
 
-        
+        {/* Navigation Links */}
+        <nav className="hidden md:flex space-x-8 text-lg">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-theme underline transition duration-300"
+                : "hover:text-theme active:scale-75 hover:scale-105 font-bold transition duration-300"
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/listings"
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-theme underline transition duration-300"
+                : "hover:text-theme active:scale-75 hover:scale-105 font-bold transition duration-300"
+            }
+          >
+            Deals
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "font-semibold text-theme underline transition duration-300"
+                : "hover:text-theme active:scale-75 hover:scale-105 font-bold transition duration-300"
+            }
+          >
+            About
+          </NavLink>
+        </nav>
 
         {/* Profile/Buttons */}
         <div className="relative" ref={dropDownRef}>
