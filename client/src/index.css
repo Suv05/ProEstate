@@ -140,3 +140,35 @@ button:focus-visible {
   /*height: 100vh; Ensure the div has height */
   width: 100%; /* Ensure the div spans the full width */
 }
+
+/* Define keyframe animations for the fade-out and fade-in effects */
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Add classes for animation effects */
+.fade-out-left {
+  animation: fadeOutLeft 0.5s forwards;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.5s forwards;
+}

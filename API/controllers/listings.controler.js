@@ -119,7 +119,7 @@ export const getOfferListings = async (req, res, next) => {
 
 // Handler function to get listings with sort and a limit
 export const getSortListings = async (req, res, next) => {
-  const limit = parseInt(req.query.limit) || 4; // Default limit to 4 if not provided
+  const limit = parseInt(req.query.limit) || 32; // Default limit to 4 if not provided
   const listings = await Listings.find({})
     .sort({ createdAt: -1 }) // Sort by the `createdAt` field in descending order (newest first)
     .limit(limit);
@@ -133,7 +133,7 @@ export const getSortListings = async (req, res, next) => {
 
 //sort listings according to the price
 export const getListingsByPrice = async (req, res, next) => {
-  const limit = parseInt(req.query.limit) || 4; // Default limit to 4 if not provided
+  const limit = parseInt(req.query.limit) || 32; // Default limit to 4 if not provided
   const sortOrder = req.query.sortOrder === "asc" ? 1 : -1; // Sort ascending or descending based on query parameter
 
   const listings = await Listings.find({})

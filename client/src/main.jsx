@@ -27,8 +27,8 @@ import Viewlistings from "./components/User-Page/Viewlistings.jsx";
 import Account from "./components/User-Page/Account.jsx";
 import Listingitem from "./components/User-Page/Listingitem.jsx";
 import SearchPage from "./components/pages/SearchPage.jsx";
-import Listings from "./components/pages/Listings.jsx";
-import SingleList from "./components/pages/SingleList.jsx";
+import Listings from "./components/Listings-UI/Listings.jsx";
+import SingleList from "./components/Listings-UI/SingleList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
