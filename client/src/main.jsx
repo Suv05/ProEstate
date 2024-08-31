@@ -19,6 +19,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import App from "./components/routes/App.jsx";
 import Home from "./components/pages/Home.jsx";
+import About from "./components/pages/About.jsx";
 import Signup from "./components/pages/Signup.jsx";
 import Signin from "./components/pages/Signin.jsx";
 import Protected from "./components/routes/Protected.jsx";
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
       <Route path="signup" element={<Signup />} />
       <Route path="signin" element={<Signin />} />
       <Route path="explore" element={<SearchPage />} />
