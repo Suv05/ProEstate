@@ -36,6 +36,7 @@ function SingleList({}) {
   if (error) return <Broken />;
 
   const listing = data?.listing;
+  const email = data?.email;
   return (
     <>
       <Link to=".." relative="path">
@@ -168,7 +169,7 @@ function SingleList({}) {
 
         {/* Contact Section */}
         {currUser && currUser._id !== listing.userRef && (
-          <ContactOwner email={currUser.email} subject={listing.title} />
+          <ContactOwner email={email} subject={listing.title} />
         )}
 
         {/* Footer Section */}

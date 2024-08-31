@@ -1,6 +1,7 @@
 import "express-async-errors";
 import { StatusCodes } from "http-status-codes";
 import Listings from "../models/listings.model.js";
+import User from "../models/user.model.js";
 
 export const searchFunctionality = async (req, res, next) => {
   const limit = parseInt(req.query.limit) || 10;
@@ -93,7 +94,9 @@ export const getAllListings = async (req, res, next) => {
 //to get a single listing
 export const getSingleListing = async (req, res, next) => {
   const listing = await Listings.findById(req.params.id);
-  return res.status(StatusCodes.OK).json({ listing });
+  const ownerContact = await User.findById(listing.userRef);
+  const email = ownerContact.email;
+  return res.status(StatusCodes.OK).json({ listing, email });
 };
 
 // Handler function to get listings with offer=true and a limit
