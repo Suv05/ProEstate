@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  searchFunctionality,
   getAllListings,
   getSingleListing,
   getOfferListings,
@@ -9,9 +8,6 @@ import {
 } from "../controllers/listings.controler.js";
 
 const router = express.Router();
-
-// For advanced search functionality
-router.route("/search").get(searchFunctionality);
 
 //to get all listings you can apply limit as well
 router.route("/").get(getAllListings);
