@@ -10,6 +10,7 @@ import {
   FaBath,
   FaChevronCircleRight,
   FaChevronCircleLeft,
+  FaHeart,
 } from "react-icons/fa";
 import { MdOutlinePets } from "react-icons/md";
 
@@ -25,6 +26,9 @@ function NewListing({}) {
 
   // Animation state
   const [animationClass, setAnimationClass] = useState("");
+
+  //isfovorite
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const fetchNewListings = async () => {
@@ -99,12 +103,24 @@ function NewListing({}) {
                 .slice(currIndex, currIndex + itemsPerPage)
                 .map((listing) => (
                   <Link to={`/listings/${listing._id}`} key={listing._id}>
-                    <div className="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                    <div className="relative bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                       <img
                         src={listing.imageUrls[0]} // Display the first image
                         alt={listing.title}
                         className="w-full h-48 object-cover rounded-t-lg"
                       />
+                      {/* Heart Icon */}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent navigating to the listing detail page when clicking the heart icon
+                          onToggleFavorite(listing._id);
+                        }}
+                        className={`absolute top-2 right-2 text-2xl ${
+                          isFavorite ? "text-red-500" : "text-gray-300"
+                        } hover:text-red-500 transition duration-300`}
+                      >
+                        <FaHeart />
+                      </button>
                       <div className="p-4">
                         <div className="flex justify-between items-center">
                           <h2 className="text-lg font-bold">{listing.title}</h2>
