@@ -7,7 +7,7 @@ function About({}) {
         <div className="container mx-auto px-6">
           {/* Header */}
           <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">
-            About ProEstate
+            About Pro<span className="text-theme underline">Estate</span>
           </h1>
 
           {/* Content Section */}
