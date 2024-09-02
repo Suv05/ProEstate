@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import Spinner from "../utilities/Spinner.jsx";
 import Broken from "../utilities/Broken.jsx";
@@ -10,15 +11,12 @@ import {
   FaBath,
   FaChevronCircleRight,
   FaChevronCircleLeft,
+  FaHeart,
 } from "react-icons/fa";
 import { MdOutlinePets } from "react-icons/md";
 
 function TrendingListing({}) {
-  const [trendingListings, setTrendingListings] = useState([]);
-
-  //err and loading state handeling
-  const [err, setErr] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   //pagination state
   const [currIndex, setCurrIndex] = useState(0);
@@ -27,24 +25,58 @@ function TrendingListing({}) {
   // Animation state
   const [animationClass, setAnimationClass] = useState("");
 
-  useEffect(() => {
-    const fetchTrendingListings = async () => {
-      try {
-        const response = await fetch("api/v1/listings/price?sort=price");
-        if (!response.ok) {
-          throw new Error("Failed to fetch trending listings");
-        }
-        const data = await response.json();
-        setTrendingListings(data.listings || []);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching trending listings:", error);
-        setErr(error.message);
-        setLoading(false);
+  // Initialize state with the value from local storage, or an empty object if not found
+  const [favoritesMap, setFavoritesMap] = useState(() => {
+    const savedFavorites = localStorage.getItem("favoritesMap");
+    return savedFavorites ? JSON.parse(savedFavorites) : {};
+  });
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["trendingListings"],
+    queryFn: async () => {
+      const response = await fetch("api/v1/listings/price?sort=price");
+      return response.json();
+    },
+  });
+
+  //mutation for adding and removing favorites listing
+  const toggleFavoriteMutation = useMutation({
+    mutationFn: async (listingId) => {
+      const isFavorited = favoritesMap[listingId];
+      const method = isFavorited ? "DELETE" : "POST";
+      const response = await fetch("/api/v1/favorite/favitems", {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ listingId }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to ${isFavorited ? "remove" : "add"} favorite`);
       }
-    };
-    fetchTrendingListings();
-  }, []);
+    },
+    onSuccess: (data, listingId) => {
+      queryClient.invalidateQueries(["newListings"]);
+      // Update the favorite status for this particular listing
+      updateFavoritesMap(listingId);
+    },
+  });
+
+  const trendingListings = data?.listings;
+
+  // Update state and local storage when favoritesMap changes
+  const updateFavoritesMap = (listingId) => {
+    setFavoritesMap((prevMap) => {
+      const updatedMap = {
+        ...prevMap,
+        [listingId]: !prevMap[listingId],
+      };
+      // Store the updated map in local storage
+      localStorage.setItem("favoritesMap", JSON.stringify(updatedMap));
+      return updatedMap;
+    });
+  };
 
   //Navigate to prev page
   const handlePrev = () => {
@@ -75,8 +107,8 @@ function TrendingListing({}) {
     }, 500); // The delay matches the animation duration
   };
 
-  if (loading) return <Spinner />;
-  if (err) return <Broken />;
+  if (isLoading) return <Spinner />;
+  if (error) return <Broken />;
   return (
     <>
       <div className="bg-white py-16">
@@ -107,6 +139,22 @@ function TrendingListing({}) {
                         alt={listing.title}
                         className="w-full h-48 object-cover rounded-t-lg"
                       />
+
+                      {/* Heart Icon */}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent navigating to the listing detail page when clicking the heart icon
+                          toggleFavoriteMutation.mutate(listing._id);
+                        }}
+                        className={`absolute top-2 right-2 text-2xl ${
+                          favoritesMap[listing._id]
+                            ? "text-red-500"
+                            : "text-gray-300"
+                        } hover:text-red-500 transition duration-300`}
+                      >
+                        <FaHeart />
+                      </button>
+
                       <div className="p-4">
                         <div className="flex justify-between items-center">
                           <h2 className="text-lg font-bold">{listing.title}</h2>
