@@ -42,7 +42,7 @@ const router = createBrowserRouter(
       <Route element={<Protected />}>
         <Route path="/listings" element={<Listings />} />
         <Route path="/listings/:id" element={<SingleList />} />
-        <Route path="/listings/favorite" element={<Favorite />} />
+        <Route path="/favorite" element={<Favorite />} />
         <Route path="/account" element={<Account />} />
         <Route path="/new" element={<Createlistings />} />
         <Route path="/yourestate" element={<Viewlistings />} />

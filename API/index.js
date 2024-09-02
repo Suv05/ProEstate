@@ -9,6 +9,7 @@ import createConnection from "./DB/connect.js";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import listingsRoute from "./routes/listings.route.js";
+import favoriteRoute from "./routes/favorite.route.js";
 
 //import error-handeler
 import { errorHandler } from "./middlewares/errorHandeler.js";
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/listings", listingsRoute);
+app.use("/api/v1/favorite", favoriteRoute);
 
 app.use(errorHandler);
 

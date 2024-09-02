@@ -76,7 +76,7 @@ function Userprofile() {
 
         {/* wishlist */}
         <Link
-          to={`/listings/favorite`}
+          to={`/favorite`}
           className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out flex items-center justify-between"
         >
           <div className="flex items-center">

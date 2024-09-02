@@ -1,24 +1,26 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { FaRegTrashCan } from "react-icons/fa6";
+
+import Spinner from "../utilities/Spinner";
+import Broken from "../utilities/Broken";
 
 function Favorite() {
-  //const favorites = useSelector((state) => state.favorite.favorites);
-  const favorites = [
-    // Example data; replace with dynamic data from your backend
-    {
-      id: 1,
-      title: "Luxury Villa in Beverly Hills",
-      image: "https://via.placeholder.com/300", // Replace with actual image URLs
-      location: "Beverly Hills, CA",
-      price: "$5,000,000",
+  const navigate = useNavigate();
+  const { currUser } = useSelector((state) => state.user);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["favorites", currUser._id],
+    queryFn: async () => {
+      const response = await fetch(`/api/v1/favorite/favitems`);
+      return response.json();
     },
-    {
-      id: 2,
-      title: "Modern Apartment in New York",
-      image: "https://via.placeholder.com/300",
-      location: "New York, NY",
-      price: "$3,000,000",
-    },
-  ];
+  });
+
+  if (isLoading) return <Spinner />;
+  if (error) return <Broken />;
+
+  const favorites = data?.listings;
 
   return (
     <div className="container mx-auto p-4 font-sans">
@@ -28,22 +30,34 @@ function Favorite() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {favorites.map((favorite) => (
           <div
-            key={favorite.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden transform transition duration-500 hover:scale-105"
+            key={favorite._id}
+            className="relative bg-white shadow-md rounded-lg overflow-hidden transform transition duration-500 hover:scale-105"
           >
             <img
-              src={favorite.image}
+              src={favorite.imageUrls[0]}
               alt={favorite.title}
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold">{favorite.title}</h2>
               <p className="text-gray-600">{favorite.location}</p>
-              <p className="text-primary font-bold">{favorite.price}</p>
-              <button className="mt-4 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:from-secondary hover:to-primary focus:outline-none">
+              <p className="text-primary font-bold">
+                ${favorite.regularPrice - favorite.discountPrice}
+              </p>
+              <button
+                className="mt-4 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:from-secondary hover:to-primary focus:outline-none"
+                onClick={() => navigate(`/listings/${favorite._id}`)}
+              >
                 View Details
               </button>
             </div>
+            {/* Delete Button */}
+            <button
+              className="absolute top-2 right-2 text-red-600 bg-white rounded-full p-2 hover:bg-red-600 hover:text-white transition-colors duration-300 focus:outline-none"
+              onClick={() => onDelete(favorite._id)}
+            >
+              <FaRegTrashCan />
+            </button>
           </div>
         ))}
       </div>
