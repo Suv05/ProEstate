@@ -29,24 +29,24 @@ function Footer() {
             <h2 className="text-xl font-bold mb-4">Quick Links</h2>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to={`/`} className="text-gray-400 hover:text-white">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="/about" className="text-gray-400 hover:text-white">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="/services" className="text-gray-400 hover:text-white">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="/contact" className="text-gray-400 hover:text-white">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
