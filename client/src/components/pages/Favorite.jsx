@@ -11,7 +11,7 @@ function Favorite() {
   const { currUser } = useSelector((state) => state.user);
   const queryClient = useQueryClient();
 
-  //fetch favorite list
+  // Fetch favorite list
   const { data, isLoading, error } = useQuery({
     queryKey: ["favorites", currUser._id],
     queryFn: async () => {
@@ -31,7 +31,30 @@ function Favorite() {
         body: JSON.stringify({ listingId }),
       });
     },
-    onSuccess: () => {
+    onMutate: async (listingId) => {
+      // Optimistic update
+      await queryClient.cancelQueries(["favorites", currUser._id]);
+      const previousFavorites = queryClient.getQueryData([
+        "favorites",
+        currUser._id,
+      ]);
+
+      queryClient.setQueryData(["favorites", currUser._id], (old) => ({
+        ...old,
+        listings: old.listings.filter((favorite) => favorite._id !== listingId),
+      }));
+
+      return { previousFavorites };
+    },
+    onError: (err, listingId, context) => {
+      // Rollback on error
+      queryClient.setQueryData(
+        ["favorites", currUser._id],
+        context.previousFavorites
+      );
+      alert("Failed to remove favorite. Please try again.");
+    },
+    onSettled: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries(["favorites", currUser._id]);
     },
@@ -48,9 +71,15 @@ function Favorite() {
         I ❤️‍🔥 Pro<span className="text-theme underline">Estate</span>
       </h1>
       {favorites.length === 0 && (
-        <p className="text-center mt-8 text-xl font-semibold">
-          No Favorites Listing found 😔
-        </p>
+        <div className="text-center mt-8 text-xl font-semibold">
+          <p>No Favorites Listing found 😔</p>
+          <button
+            className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors"
+            onClick={() => navigate("/listings")}
+          >
+            Browse Listings
+          </button>
+        </div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {favorites.map((favorite) => (
