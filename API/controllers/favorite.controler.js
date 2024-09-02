@@ -26,3 +26,15 @@ export const getFavorites = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ listings });
 };
+
+export const deleteFavorites = async (req, res) => {
+  const { id } = req.user;
+  const { listingId } = req.body;
+
+  const favorite = await Favorite.findOneAndDelete({
+    userId: id,
+    listingId,
+  });
+
+  res.status(StatusCodes.OK).json({ favorite });
+};

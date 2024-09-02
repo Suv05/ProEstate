@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
@@ -9,11 +9,31 @@ import Broken from "../utilities/Broken";
 function Favorite() {
   const navigate = useNavigate();
   const { currUser } = useSelector((state) => state.user);
+  const queryClient = useQueryClient();
+
+  //fetch favorite list
   const { data, isLoading, error } = useQuery({
     queryKey: ["favorites", currUser._id],
     queryFn: async () => {
       const response = await fetch(`/api/v1/favorite/favitems`);
       return response.json();
+    },
+  });
+
+  // Mutation for deleting a favorite
+  const deleteFavoriteMutation = useMutation({
+    mutationFn: async (listingId) => {
+      await fetch(`/api/v1/favorite/favitems`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ listingId }),
+      });
+    },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries(["favorites", currUser._id]);
     },
   });
 
@@ -54,7 +74,7 @@ function Favorite() {
             {/* Delete Button */}
             <button
               className="absolute top-2 right-2 text-red-600 bg-white rounded-full p-2 hover:bg-red-600 hover:text-white transition-colors duration-300 focus:outline-none"
-              onClick={() => onDelete(favorite._id)}
+              onClick={() => deleteFavoriteMutation.mutate(favorite._id)}
             >
               <FaRegTrashCan />
             </button>
