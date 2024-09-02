@@ -47,6 +47,11 @@ function Favorite() {
       <h1 className="text-3xl font-bold mb-4 text-center mt-2">
         I ❤️‍🔥 Pro<span className="text-theme underline">Estate</span>
       </h1>
+      {favorites.length === 0 && (
+        <p className="text-center mt-8 text-xl font-semibold">
+          No Favorites Listing found 😔
+        </p>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {favorites.map((favorite) => (
           <div
