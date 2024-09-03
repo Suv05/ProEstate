@@ -7,6 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { ThemeProvider } from "./components/utilities/ThemeProvider.jsx";
 import "./index.css";
 
 //redux dependencies
@@ -61,7 +62,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       {/* PersistGate delays rendering until the persisted state is rehydrated */}
       <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
         </QueryClientProvider>
       </PersistGate>
     </Provider>

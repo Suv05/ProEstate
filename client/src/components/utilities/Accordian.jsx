@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { useTheme } from "./ThemeProvider";
 
 function Accordian() {
   const data = [
@@ -30,6 +31,8 @@ function Accordian() {
     },
   ];
 
+  const { isDarkMode } = useTheme();
+
   // Track open state for each accordion item
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -43,38 +46,46 @@ function Accordian() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-[#222222] text-center px-4 py-2 mt-3 ">
-        Frequently <span className="text-theme">Asked Questions</span>
-      </h1>
-      <div className="flex flex-col px-5 mt-3 mb-6">
-        {data.map((item, index) => (
-          <div key={index} className="mb-4">
-            <div
-              className="flex justify-between py-4 shadow-lg items-center px-2 border border-t-gray-200 rounded-lg"
-            >
-              <h1 className="text-lg text-[#222222] font-semibold">
-                {item.title}
-              </h1>
-              <span
-                className="cursor-pointer"
-                onClick={() => toggleAccordian(index)}
+      <div className={`relative py-16 ${isDarkMode ? "bg-[#222222]" : "bg-gray-50"}`}>
+        <h1
+          className={`text-3xl font-bold ${
+            isDarkMode ? "text-white" : "text-[#222222]"
+          } text-center px-4 py-2 mt-3 `}
+        >
+          Frequently <span className="text-theme">Asked Questions</span>
+        </h1>
+        <div className="flex flex-col px-5 mt-3 mb-6">
+          {data.map((item, index) => (
+            <div key={index} className="mb-4">
+              <div className="flex justify-between py-4 shadow-lg items-center px-2 border border-t-gray-200 rounded-lg">
+                <h1
+                  className={`text-lg ${
+                    isDarkMode ? "text-white" : "text-[#222222]"
+                  } font-semibold`}
+                >
+                  {item.title}
+                </h1>
+                <span
+                  className="cursor-pointer"
+                  onClick={() => toggleAccordian(index)}
+                >
+                  {openIndex === index ? (
+                    <FiMinus size={25} className="text-blue-500" />
+                  ) : (
+                    <FiPlus size={25} className="text-blue-500" />
+                  )}
+                </span>
+              </div>
+              <div
+                className={`px-2 py-2 shadow-lg rounded-xl border border-t-gray-100 mt-1 ${
+                  isDarkMode ? "text-white" : "text-[#363636]"
+                } ${openIndex === index ? "" : "hidden"}`}
               >
-                {openIndex === index ? (
-                  <FiMinus size={25} className="text-blue-500" />
-                ) : (
-                  <FiPlus size={25} className="text-blue-500" />
-                )}
-              </span>
+                {item.answer}
+              </div>
             </div>
-            <div
-              className={`px-2 py-2 shadow-lg rounded-xl border border-t-gray-100 mt-1 text-[#363636] ${
-                openIndex === index ? "" : "hidden"
-              }`}
-            >
-              {item.answer}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );

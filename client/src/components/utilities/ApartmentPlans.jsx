@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
 const ApartmentPlans = () => {
   const [activeTab, setActiveTab] = useState("Deluxe Portion");
+  const { isDarkMode } = useTheme();
 
   const tabs = ["The Studio", "Deluxe Portion", "Penthouse", "Double Height"];
 
   return (
-    <div className="bg-gray-50 py-8">
-      <h2 className="text-3xl md:text-3xl font-semibold text-center mb-4 text-[#222222]">
+    <div className={`${isDarkMode ? "bg-[#222222]" : "bg-gray-50"} py-8`}>
+      <h2
+        className={`text-3xl md:text-3xl font-semibold text-center mb-4 ${
+          isDarkMode ? "text-white" : "text-[#222222]"
+        } `}
+      >
         Apartment <span className="text-theme">Plans</span>
       </h2>
       <div className="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-6">

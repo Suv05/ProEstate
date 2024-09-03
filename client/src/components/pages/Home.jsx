@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../utilities/ThemeProvider.jsx";
 
 import {
   FaCar,
@@ -42,6 +43,7 @@ function Home({}) {
     { icon: <FaChild size={24} />, title: "Kids Playland" },
   ];
 
+  const { isDarkMode } = useTheme();
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -79,14 +81,22 @@ function Home({}) {
   return (
     <div className="font-sans antialiased text-gray-900">
       {/* Hero Section */}
-      <div className="relative bg-blue-50">
+      <div
+        className={isDarkMode ? `relative bg-[#222222]` : `relative bg-blue-50`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
             {/* Conditional background for mobile */}
             <div className="md:hidden myImg h-64 rounded-lg shadow-md"></div>
 
             <div className="flex flex-col justify-center">
-              <h1 className="text-4xl font-bold text-[#222222]">
+              <h1
+                className={
+                  isDarkMode
+                    ? `text-4xl font-bold text-white`
+                    : `text-4xl font-bold text-[#222222]`
+                }
+              >
                 Let's find your <span className="text-theme">Dream...</span>
               </h1>
               <p className="mt-4 text-lg text-sec">
@@ -122,9 +132,13 @@ function Home({}) {
       </div>
 
       {/* Featured Section */}
-      <div className="bg-white py-16">
+      <div className={isDarkMode ? `bg-gray-800 py-16` : `bg-white py-16`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-gray-800 text-center">
+          <h2
+            className={`text-3xl font-semibold ${
+              isDarkMode ? "text-white" : "text-gray-800 "
+            } text-center`}
+          >
             Hi, What do you want in your{" "}
             <p className="text-theme">Dream Apartment?</p>
           </h2>
@@ -183,9 +197,13 @@ function Home({}) {
       </div>
 
       {/* Featured Apartment */}
-      <div className="bg-white py-16">
+      <div className={isDarkMode ? `bg-[#222222] py-16` : `bg-white py-16`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-gray-800 text-center">
+          <h2
+            className={`text-3xl font-semibold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            }  text-center`}
+          >
             Featured <span className="text-theme">Apartment</span>
           </h2>
           <p className="text-center text-sm text-gray-400">
@@ -266,13 +284,23 @@ function Home({}) {
       </div>
 
       {/* Location Section */}
-      <div className="relative bg-blue-50">
+      <div className={`relative ${isDarkMode ? "bg-gray-800" : "bg-blue-50"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
             {/* Left Text Section */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-3xl font-semibold text-gray-800">Buy</h1>
-              <h2 className="text-4xl font-bold text-gray-800">
+              <h1
+                className={`text-3xl font-semibold ${
+                  isDarkMode ? "text-white" : "text-gray-800"
+                }`}
+              >
+                Buy
+              </h1>
+              <h2
+                className={`text-4xl font-bold ${
+                  isDarkMode ? "text-white" : "text-gray-800"
+                } `}
+              >
                 Dream Apartment
               </h2>
               <p className="text-3xl font-semibold text-sec">
@@ -295,9 +323,13 @@ function Home({}) {
       <ApartmentPlans />
 
       {/* features section */}
-      <div className="relative bg-blue-50">
+      <div className={`relative ${isDarkMode ? "bg-gray-800" : "bg-blue-50"}`}>
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-center text-gray-800">
+          <h2
+            className={`text-3xl font-semibold text-center ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            }`}
+          >
             Featured <span className="text-theme">Listings</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">

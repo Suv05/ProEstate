@@ -2,6 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
+  darkMode: "class", // or 'selector'
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {

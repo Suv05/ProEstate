@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FiUser,
   FiList,
@@ -13,15 +13,11 @@ import { IoIosHeartHalf } from "react-icons/io";
 
 import Rightarrow from "../utilities/Rightarrow";
 import Modal from "./Modal";
+import { useTheme } from "./ThemeProvider.jsx";
 
 function Userprofile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
     <>
