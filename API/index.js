@@ -33,7 +33,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/listings", listingsRoute);
 app.use("/api/v1/favorite", favoriteRoute);
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
