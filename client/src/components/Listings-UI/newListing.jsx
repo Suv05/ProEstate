@@ -1,3 +1,4 @@
+import { useTheme } from "../utilities/ThemeProvider.jsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -16,6 +17,7 @@ import {
 import { MdOutlinePets } from "react-icons/md";
 
 function NewListing({}) {
+  const { isDarkMode } = useTheme();
   const queryClient = useQueryClient();
   //pagination state
   const [currIndex, setCurrIndex] = useState(0);
@@ -108,9 +110,13 @@ function NewListing({}) {
 
   return (
     <>
-      <div className="bg-white py-16">
+      <div className={`py-16 ${isDarkMode ? "bg-gray-900" : "bg-white"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-semibold text-gray-800">
+          <h1
+            className={`text-3xl font-semibold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            }`}
+          >
             New in 🏚️<span className="text-theme">Our family</span>
           </h1>
           <div className="mt-8 flex items-center justify-between">
@@ -130,7 +136,11 @@ function NewListing({}) {
                 .slice(currIndex, currIndex + itemsPerPage)
                 .map((listing) => (
                   <Link to={`/listings/${listing._id}`} key={listing._id}>
-                    <div className="relative bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                    <div
+                      className={`relative rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl ${
+                        isDarkMode ? "bg-gray-800" : "bg-white"
+                      }`}
+                    >
                       <img
                         src={listing.imageUrls[0]} // Display the first image
                         alt={listing.title}
@@ -152,7 +162,13 @@ function NewListing({}) {
                       </button>
                       <div className="p-4">
                         <div className="flex justify-between items-center">
-                          <h2 className="text-lg font-bold">{listing.title}</h2>
+                          <h2
+                            className={`text-lg font-bold ${
+                              isDarkMode ? "text-white" : "text-gray-800"
+                            }`}
+                          >
+                            {listing.title}
+                          </h2>
                         </div>
                         <p className="text-sm text-gray-600 mb-4">
                           {listing.location}
@@ -171,7 +187,11 @@ function NewListing({}) {
                             {listing.offer ? "Special Offer" : "Regular"}
                           </span>
                         </div>
-                        <div className="flex justify-between text-sm text-gray-600">
+                        <div
+                          className={`flex justify-between text-sm ${
+                            isDarkMode ? "text-white" : "text-gray-600"
+                          }`}
+                        >
                           <span className="flex items-center space-x-2 hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
                             <FaBed />
                             <span>{listing.bedrooms} Beds</span>

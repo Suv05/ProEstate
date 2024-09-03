@@ -2,11 +2,13 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { useTheme } from "../utilities/ThemeProvider";
 
 import Spinner from "../utilities/Spinner";
 import Broken from "../utilities/Broken";
 
 function Favorite() {
+  const { isDarkMode } = useTheme();
   const navigate = useNavigate();
   const { currUser } = useSelector((state) => state.user);
   const queryClient = useQueryClient();
@@ -66,7 +68,13 @@ function Favorite() {
   const favorites = data?.listings;
 
   return (
-    <div className="container mx-auto p-4 font-sans">
+    <div
+      className={`${
+        isDarkMode ? "bg-gray-900" : "bg-gray-100"
+      } container mx-auto p-4 font-sans ${
+        isDarkMode ? "text-white" : "text-gray-800"
+      }`}
+    >
       <h1 className="text-3xl font-bold mb-4 text-center mt-2">
         I ❤️‍🔥 Pro<span className="text-theme underline">Estate</span>
       </h1>
@@ -93,7 +101,9 @@ function Favorite() {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-xl font-semibold">{favorite.title}</h2>
+              <h2 className={`text-xl font-semibold text-gray-800`}>
+                {favorite.title}
+              </h2>
               <p className="text-gray-600">{favorite.location}</p>
               <p className="text-primary font-bold">
                 ${favorite.regularPrice - favorite.discountPrice}

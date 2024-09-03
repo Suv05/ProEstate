@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useTheme } from "../utilities/ThemeProvider";
 
 //utiliteis
 import Signbtn from "../utilities/Signbtn";
 import Userprofile from "../utilities/Userprofile";
 
 function Header() {
+  const { isDarkMode } = useTheme();
   const { currUser } = useSelector((state) => state.user);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropDownRef = useRef(null);
@@ -34,7 +36,7 @@ function Header() {
   }, [location]);
 
   return (
-    <header className="bg-white shadow-md font-sans">
+    <header className={`${isDarkMode ? "bg-gray-800" : "bg-white"} shadow-md font-sans`}>
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <NavLink
@@ -45,13 +47,13 @@ function Header() {
               : "hover:text-theme active:scale-75 hover:scale-105 font-bold transition duration-300"
           }
         >
-          <div className="text-2xl font-bold text-gray-800">
+          <div className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-gray-800"}`}>
             Pro<span className="text-theme hover:underline">Estate</span>
           </div>
         </NavLink>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex space-x-8 text-lg">
+        <nav className={`hidden md:flex space-x-8 text-lg ${isDarkMode ? "text-white" : "text-gray-800"}`}>
           <NavLink
             to="/"
             className={({ isActive }) =>

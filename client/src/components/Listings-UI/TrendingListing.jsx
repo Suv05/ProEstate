@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useTheme } from "../utilities/ThemeProvider.jsx";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -16,6 +17,7 @@ import {
 import { MdOutlinePets } from "react-icons/md";
 
 function TrendingListing({}) {
+  const { isDarkMode } = useTheme();
   const queryClient = useQueryClient();
 
   //pagination state
@@ -111,9 +113,13 @@ function TrendingListing({}) {
   if (error) return <Broken />;
   return (
     <>
-      <div className="bg-white py-16">
+      <div className={`${isDarkMode ? "bg-slate-600" : "bg-white"} py-16`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-semibold text-gray-800">
+          <h1
+            className={`text-3xl font-semibold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            }`}
+          >
             Trending 💥 in <span className="text-theme">Our ProEsate</span>
           </h1>
           <div className="mt-8 flex items-center justify-between">
@@ -133,7 +139,11 @@ function TrendingListing({}) {
                 .slice(currIndex, currIndex + itemsPerPage)
                 .map((listing) => (
                   <Link to={`/listings/${listing._id}`} key={listing._id}>
-                    <div className="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                    <div
+                      className={`rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl ${
+                        isDarkMode ? "bg-gray-800" : "bg-white"
+                      }`}
+                    >
                       <img
                         src={listing.imageUrls[0]} // Display the first image
                         alt={listing.title}
@@ -157,7 +167,13 @@ function TrendingListing({}) {
 
                       <div className="p-4">
                         <div className="flex justify-between items-center">
-                          <h2 className="text-lg font-bold">{listing.title}</h2>
+                          <h2
+                            className={`text-lg font-bold ${
+                              isDarkMode ? "text-white" : "text-gray-800"
+                            } `}
+                          >
+                            {listing.title}
+                          </h2>
                         </div>
                         <p className="text-sm text-gray-600 mb-4">
                           {listing.location}
@@ -176,7 +192,11 @@ function TrendingListing({}) {
                             {listing.offer ? "Special Offer" : "Regular"}
                           </span>
                         </div>
-                        <div className="flex justify-between text-sm text-gray-600">
+                        <div
+                          className={`flex justify-between text-sm ${
+                            isDarkMode ? "text-white" : "text-gray-600"
+                          }`}
+                        >
                           <span className="flex items-center space-x-2 hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
                             <FaBed />
                             <span>{listing.bedrooms} Beds</span>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../utilities/ThemeProvider.jsx";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   FaCar,
@@ -44,39 +45,27 @@ function Home({}) {
   ];
 
   const { isDarkMode } = useTheme();
-  const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [selected, setSelected] = useState(null);
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["listings"],
+    queryFn: async () => {
+      const res = await fetch("/api/v1/listings?limit=4");
+      if (!res.ok) {
+        throw new Error("Failed to fetch listings");
+      }
+      return res.json();
+    },
+  });
 
   const handleSelect = (index) => {
     setSelected(index);
   };
 
-  useEffect(() => {
-    const fetchListings = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch("/api/v1/listings?limit=4");
-        if (!res.ok) {
-          throw new Error("Failed to fetch listings");
-        }
-        const data = await res.json();
-        setListings(data.listings);
-        setLoading(false);
-      } catch (err) {
-        setError(true);
-        setLoading(false);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchListings();
-  }, []);
-
-  if (loading) return <Spinner />;
+  if (isLoading) return <Spinner />;
   if (error) return <Broken />;
+
+  const listings = data?.listings;
 
   return (
     <div className="font-sans antialiased text-gray-900">

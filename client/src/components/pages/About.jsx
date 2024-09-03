@@ -1,23 +1,46 @@
-import React from "react";
+import { useTheme } from "../utilities/ThemeProvider";
 
 function About({}) {
+  const { isDarkMode } = useTheme();
   return (
     <>
-      <div className="bg-gray-100 min-h-screen py-10">
+      <div
+        className={`${
+          isDarkMode ? "bg-gray-900" : "bg-gray-100"
+        } min-h-screen py-10`}
+      >
         <div className="container mx-auto px-6">
           {/* Header */}
-          <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">
+          <h1
+            className={`text-4xl font-bold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            } text-center mb-8`}
+          >
             About Pro<span className="text-theme underline">Estate</span>
           </h1>
 
           {/* Content Section */}
-          <div className="bg-white shadow-lg rounded-lg p-8">
-            <p className="text-lg text-gray-700 mb-4">
+          <div
+            className={`${
+              isDarkMode ? "bg-slate-500" : "bg-white"
+            } shadow-lg rounded-lg p-8 ${
+              isDarkMode ? "bg-gray-800" : "bg-white"
+            }`}
+          >
+            <p
+              className={`text-lg ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              } mb-4`}
+            >
               Welcome to ProEstate, your number one source for real estate
               solutions. We're dedicated to giving you the very best properties,
               focusing on dependability, customer service, and uniqueness.
             </p>
-            <p className="text-lg text-gray-700 mb-4">
+            <p
+              className={`text-lg ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              } mb-4`}
+            >
               Founded in 2024, ProEstate has come a long way from its
               beginnings. When we first started, our passion for finding the
               best deals drove us to do intense research and gave us the impetus
@@ -25,7 +48,11 @@ function About({}) {
               We now serve customers all over the world and are thrilled to be a
               part of the real estate industry.
             </p>
-            <p className="text-lg text-gray-700">
+            <p
+              className={`text-lg ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              }`}
+            >
               We hope you enjoy our services as much as we enjoy offering them
               to you. If you have any questions or comments, please don't
               hesitate to contact us.
@@ -34,7 +61,11 @@ function About({}) {
 
           {/* Team Section */}
           <div className="mt-12 text-center">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-6">
+            <h2
+              className={`text-3xl font-semibold ${
+                isDarkMode ? "text-white" : "text-gray-800"
+              }  mb-6`}
+            >
               Our Team
             </h2>
             <div className="flex flex-wrap justify-center space-x-6">

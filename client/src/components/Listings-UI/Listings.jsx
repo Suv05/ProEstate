@@ -1,3 +1,4 @@
+import { useTheme } from "../utilities/ThemeProvider.jsx";
 import OfferListing from "./OfferListing.jsx";
 import NewListing from "./newListing.jsx";
 import TrendingListing from "./TrendingListing.jsx";
@@ -5,6 +6,7 @@ import TrendingListing from "./TrendingListing.jsx";
 import ImageCarousel from "../utilities/ImageCarousel.jsx";
 
 function Listings({}) {
+  const { isDarkMode } = useTheme();
   const images = [
     "https://media.istockphoto.com/id/1156127062/photo/modern-living-dining-room-and-kitchen-with-garden-view-3d-render.jpg?s=612x612&w=0&k=20&c=gE81cTFKhKMKenO_aiEldk-Gio59cxdiGtkAQ7xu_C0=",
     "https://media.istockphoto.com/id/109350275/photo/modern-living-room-and-patio-next-to-swimming-pool.jpg?s=612x612&w=0&k=20&c=-86Gi6YiQUyk2npZFZPjg5BFk-JCQWoKP3IPNDZqSCI=",
@@ -15,9 +17,9 @@ function Listings({}) {
 
   return (
     <>
-      <div className="font-sans antialiased text-gray-900">
+      <div className={`font-sans antialiased ${isDarkMode ? "text-white" : "text-gray-900"}`}>
         {/* Banner section */}
-        <div className="relative bg-blue-50">
+        <div className={`relative ${isDarkMode ? "bg-slate-400" : "bg-blue-50"}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
               {/* Left Text Section */}
