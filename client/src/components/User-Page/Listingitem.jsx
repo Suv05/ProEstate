@@ -1,3 +1,4 @@
+import { useTheme } from "../utilities/ThemeProvider";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
@@ -16,6 +17,7 @@ import Spinner from "../utilities/Spinner";
 import Broken from "../utilities/Broken";
 
 function Listingitem({}) {
+  const { isDarkMode } = useTheme();
   const { currUser } = useSelector((state) => state.user);
   const { listingId } = useParams();
   const [showMore, setShowMore] = useState(false);
@@ -41,17 +43,18 @@ function Listingitem({}) {
 
   return (
     <>
-      {/* back to action button  */}
-      <Link to=".." relative="path">
-        <div className="text-theme flex items-center px-6 mt-3 hover:font-semibold hover:underline">
-          <FaArrowLeftLong size={25} className="me-2" />
-          <span className="text-[#222222]">back to listings</span>
-        </div>
-      </Link>
-      <div className="max-w-5xl mx-auto p-6 font-sans">
+      <div
+        className={`max-w-5xl mx-auto p-6 font-sans ${
+          isDarkMode ? "bg-slate-800" : "bg-blue-50"
+        }`}
+      >
         {/* Header Section */}
         <div className="flex justify-between items-start">
-          <h1 className="text-3xl md:text-3xl lg:text-4xl font-bold mb-2 hover:underline text-[#222222]">
+          <h1
+            className={`text-3xl md:text-3xl lg:text-4xl font-bold mb-2 hover:underline ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            }`}
+          >
             {listing.title}
           </h1>
           <Sharebtn />
@@ -67,7 +70,11 @@ function Listingitem({}) {
         <hr className="mb-6" />
         {/* Main Content */}
         <div className="mt-6">
-          <h1 className="text-2xl font-semibold text-[#222222] px-6">
+          <h1
+            className={`text-2xl font-semibold mb-3 ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } px-6`}
+          >
             About this place
           </h1>
           {/* Description */}

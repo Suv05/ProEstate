@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import { useTheme } from "../utilities/ThemeProvider.jsx";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ import {
 import { app } from "../../firebase.js";
 
 function CreateListings() {
+  const { isDarkMode } = useTheme();
   const { currUser } = useSelector((state) => state.user);
   const lastUpdate = useRef(0);
   const navigate = useNavigate();
@@ -162,8 +164,16 @@ function CreateListings() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 bg-gray-100 rounded-lg shadow-lg my-6 font-sans">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+    <div
+      className={`max-w-5xl mx-auto p-6 rounded-lg shadow-lg my-6 font-sans ${
+        isDarkMode ? "bg-[#17181b]" : "bg-blue-50"
+      }`}
+    >
+      <h2
+        className={`text-3xl font-bold mb-8 text-center ${
+          isDarkMode ? "text-white" : "text-[#222222]"
+        }`}
+      >
         Create Prop<span className="text-theme">erty Listing</span>
       </h2>
       {errMsg && <Err errMsg={errMsg} />}
@@ -175,7 +185,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="title"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Title
           </label>
@@ -188,7 +200,11 @@ function CreateListings() {
               type="text"
               {...register("title", { required: "Title is required" })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.title ? "border-red-500" : "border-gray-300"
               )}
               placeholder="Enter the catchy title for your property"
@@ -202,7 +218,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="description"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Description
           </label>
@@ -217,7 +235,11 @@ function CreateListings() {
                 required: "Description is required",
               })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 pt-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 resize-none",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 pt-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 resize-none ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.description ? "border-red-500" : "border-gray-300"
               )}
               placeholder="Describe your property in detail"
@@ -233,7 +255,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="location"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Location
           </label>
@@ -246,7 +270,11 @@ function CreateListings() {
               type="text"
               {...register("location", { required: "Location is required" })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.location ? "border-red-500" : "border-gray-300"
               )}
               placeholder="Where is your property located?"
@@ -262,7 +290,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="regularPrice"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Regular Price
           </label>
@@ -279,7 +309,11 @@ function CreateListings() {
                 valueAsNumber: true,
               })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.regularPrice ? "border-red-500" : "border-gray-300"
               )}
               placeholder="Enter the regular price of the property"
@@ -295,7 +329,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="discountPrice"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Discount Price
           </label>
@@ -321,7 +357,11 @@ function CreateListings() {
                 valueAsNumber: true,
               })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.discountPrice ? "border-red-500" : "border-gray-300"
               )}
               placeholder="Enter the discounted price, if any"
@@ -337,7 +377,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="bathrooms"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Bathrooms
           </label>
@@ -353,7 +395,11 @@ function CreateListings() {
                 min: { value: 0, message: "Number must be positive" },
               })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.bathrooms ? "border-red-500" : "border-gray-300"
               )}
               placeholder="How many bathrooms are there?"
@@ -369,7 +415,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="bedrooms"
-            className="text-base font-semibold text-gray-600 mb-1"
+            className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Bedrooms
           </label>
@@ -385,7 +433,11 @@ function CreateListings() {
                 min: { value: 0, message: "Number must be positive" },
               })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                `w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.bathrooms ? "border-red-500" : "border-gray-300"
               )}
               placeholder="How many bedrooms does it have?"
@@ -401,7 +453,9 @@ function CreateListings() {
         <div className="flex flex-col">
           <label
             htmlFor="category"
-            className="text-base font-semibold text-gray-600 mb-1"
+              className={`text-base font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            } mb-1`}
           >
             Property Category
           </label>
@@ -415,7 +469,11 @@ function CreateListings() {
                 required: "Category is required",
               })}
               className={classNames(
-                "w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200",
+                ` w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5F0F40] transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`,
                 errors.category ? "border-red-500" : "border-gray-300"
               )}
             >
@@ -443,10 +501,14 @@ function CreateListings() {
           />
           <label
             htmlFor="imageUrls"
-            className="text-lg font-semibold text-gray-800"
+            className={`text-lg font-semibold ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            }`}
           >
             Property Images{" "}
-            <span className="text-sm text-gray-500">
+            <span className={`text-sm ${
+              isDarkMode ? "text-white" : "text-[#222222]"
+            }`}>
               (Max 6 images allowed)
             </span>
           </label>
@@ -509,7 +571,9 @@ function CreateListings() {
             />
             <label
               htmlFor="parking"
-              className="text-base font-semibold text-gray-800"
+              className={`text-base font-semibold ${
+                isDarkMode ? "text-white" : "text-[#222222]"
+              }`}
             >
               Parking
             </label>
@@ -525,7 +589,9 @@ function CreateListings() {
             />
             <label
               htmlFor="furnished"
-              className="text-base font-semibold text-gray-800"
+                  className={`text-base font-semibold ${
+                    isDarkMode ? "text-white" : "text-[#222222]"
+              }`}
             >
               Furnished
             </label>
@@ -541,7 +607,9 @@ function CreateListings() {
             />
             <label
               htmlFor="offer"
-              className="text-base font-semibold text-gray-800"
+              className={`text-base font-semibold ${
+                isDarkMode ? "text-white" : "text-[#222222]"
+              }`}
             >
               Special Offer
             </label>
@@ -557,7 +625,9 @@ function CreateListings() {
             />
             <label
               htmlFor="petsAllowed"
-              className="text-base font-semibold text-gray-800"
+              className={`text-base font-semibold ${
+                isDarkMode ? "text-white" : "text-[#222222]"
+              }`}
             >
               Pets Allowed
             </label>

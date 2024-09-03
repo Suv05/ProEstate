@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useState, useRef } from "react";
+import { useTheme } from "../utilities/ThemeProvider";
 
 //firebase
 import {
@@ -26,6 +27,7 @@ import Success from "../utilities/Success.jsx";
 import Progress from "../utilities/Progress.jsx";
 
 function Account({}) {
+  const { isDarkMode } = useTheme();
   const { currUser, loading } = useSelector((state) => state.user);
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
@@ -123,7 +125,11 @@ function Account({}) {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto my-12 p-6 bg-white boxShadow rounded-lg font-sans">
+      <div
+        className={`max-w-4xl mx-auto my-12 p-6 boxShadow rounded-lg font-sans ${
+          isDarkMode ? "bg-[#18171b]" : "bg-blue-50"
+        }`}
+      >
         {successMsg && <Success successMsg={successMsg} />}
         {errMsg && <Err errMsg={errMsg} />}
         {/* <!-- Header --> */}
@@ -151,7 +157,11 @@ function Account({}) {
             </label>
           </div>
           <div>
-            <h2 className="text-3xl font-semibold text-gray-800">
+            <h2
+              className={`text-3xl font-semibold ${
+                isDarkMode ? "text-white" : "text-gray-800"
+              }`}
+            >
               Hello👋🏻,{currUser.name}
             </h2>
             <p className="text-gray-500">{currUser.userName}</p>
@@ -165,7 +175,9 @@ function Account({}) {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className={`block text-base font-medium ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              }`}
             >
               Full Name
             </label>
@@ -174,7 +186,11 @@ function Account({}) {
                 type="text"
                 id="name"
                 {...register("name", { required: "Name is required" })}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+                  isDarkMode
+                    ? "bg-gray-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`}
               />
             )}
             {errors.name && (
@@ -188,7 +204,9 @@ function Account({}) {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className={`block text-base font-medium ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              }`}
             >
               Email Address
             </label>
@@ -197,7 +215,11 @@ function Account({}) {
                 type="email"
                 id="email"
                 {...register("email", { required: "Email is required" })}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+                  isDarkMode
+                    ? "bg-gray-800 text-white"
+                    : "bg-white text-[#222222]"
+                }`}
               />
             )}
             {errors.email && (
@@ -211,7 +233,9 @@ function Account({}) {
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
+              className={`block text-base font-medium ${
+                isDarkMode ? "text-white" : "text-gray-700"
+              }`}
             >
               Username
             </label>
@@ -221,7 +245,11 @@ function Account({}) {
               name="username"
               value={currUser.userName}
               readOnly
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed shadow-sm sm:text-sm"
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed shadow-sm sm:text-sm ${
+                isDarkMode
+                  ? "bg-gray-600 text-white"
+                  : "bg-white text-[#222222]"
+              }`}
             />
           </div>
 

@@ -1,3 +1,4 @@
+import { useTheme } from "../utilities/ThemeProvider";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -10,6 +11,7 @@ import Spinner from "../utilities/Spinner";
 import Broken from "../utilities/Broken";
 
 function Viewlistings({}) {
+  const { isDarkMode } = useTheme();
   const { currUser } = useSelector((state) => state.user);
   const queryClient = useQueryClient();
 
@@ -58,22 +60,36 @@ function Viewlistings({}) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 font-sans">
+    <div
+      className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 font-sans ${
+        isDarkMode ? "bg-[#18171b]" : "bg-blue-50"
+      }`}
+    >
       {/* when there is no listings to show */}
       {listings.length === 0 && (
         <div className="text-center mt-5">
-          <h1 className="text-3xl text-[#323232] font-bold">
+          <h1
+            className={`text-3xl ${
+              isDarkMode ? "text-white" : "text-[#323232]"
+            } font-bold`}
+          >
             No Listings to so for now 😔
           </h1>
           <Link to="/new">
-            <button className="text-xl border border-theme rounded-lg mt-3 hover:bg-theme hover:text-white hover:rounded-b-sm">Create One</button>
+            <button className="text-xl border border-theme rounded-lg mt-3 hover:bg-theme hover:text-white hover:rounded-b-sm">
+              Create One
+            </button>
           </Link>
         </div>
       )}
 
       {listings.map((listing) => (
         <Link to={`/yourestate/${listing._id}`} key={listing._id}>
-          <div className="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+          <div
+            className={`rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl ${
+              isDarkMode ? "bg-slate-800" : "bg-white"
+            }`}
+          >
             <img
               src={listing.imageUrls[0]} // Display the first image
               alt={listing.title}
@@ -81,7 +97,13 @@ function Viewlistings({}) {
             />
             <div className="p-4">
               <div className="flex justify-between items-center">
-                <h2 className="text-lg font-bold">{listing.title}</h2>
+                <h2
+                  className={`text-lg font-bold ${
+                    isDarkMode ? "text-white" : "text-[#323232]"
+                  }`}
+                >
+                  {listing.title}
+                </h2>
                 <div className="flex space-x-2">
                   <button
                     onClick={(e) => {
@@ -90,6 +112,7 @@ function Viewlistings({}) {
                     }}
                     className="p-2 text-blue-600 hover:text-blue-400 transition duration-300 ease-in-out transform hover:scale-110"
                     title="Edit"
+                    disabled={true}
                   >
                     <FaRegEdit />
                   </button>
@@ -105,7 +128,13 @@ function Viewlistings({}) {
                   </button>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mb-4">{listing.location}</p>
+              <p
+                className={`text-sm ${
+                  isDarkMode ? "text-white" : "text-[#323232]"
+                } mb-4`}
+              >
+                {listing.location}
+              </p>
               <div className="flex justify-between items-center mb-4">
                 <span className="text-blue-600 font-bold text-lg">
                   ${listing.discountPrice || listing.regularPrice}
@@ -120,7 +149,11 @@ function Viewlistings({}) {
                   {listing.offer ? "Special Offer" : "Regular"}
                 </span>
               </div>
-              <div className="flex justify-between text-sm text-gray-600">
+              <div
+                className={`flex justify-between text-sm ${
+                  isDarkMode ? "text-white" : "text-[#323232]"
+                }`}
+              >
                 <span className="flex items-center space-x-2 hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
                   <FaBed />
                   <span>{listing.bedrooms} Beds</span>
