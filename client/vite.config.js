@@ -44,7 +44,7 @@ export default defineConfig({
           {
             // This pattern will match all API requests to your backend
             urlPattern:
-              /^https?:\/\/(localhost:3000|your-backend-url\.onrender\.com)\/api\/v1\//,
+              /^https?:\/\/(localhost:3000|proestate\.onrender\.com)\/api\/v1\//,
             handler: "NetworkFirst",
             options: {
               cacheName: "api-cache",
